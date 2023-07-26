@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ctdonhang.user,QuanLyQuanCaPhe User,model_ctdonhang,qlcf_group_user,0,0,0,0
+access_ctdonhang.manager,QuanLyQuanCaPhe Manager,model_ctdonhang,qlcf_group_manager,1,1,1,1

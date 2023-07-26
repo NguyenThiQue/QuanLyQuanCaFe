@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="sanpham" name="Sản phẩm" sequence='2'
+              parent="NguyenLieu.base_menu"
+    />
+    <record model="ir.ui.view" id="view_sanpham_search">
+        <field name="name">Search</field>
+        <field name="model">sanpham</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_sanpham">
+        <field name="name">Sản phẩm</field>
+        <field name="model">sanpham</field>
+
+        <field name="arch" type="xml">
+            <tree string="" class = "tree_style">
+                <field name="id_sp" optional="show"/>
+                <field name="name" optional="show"/>
+                <field name="descr" optional="show"/>
+                <field name="price" optional="show"/>
+                <field name="id_catesp" optional="show"/>
+                <field name="id_nhanviencsp" optional="show"/>
+<!--                <field name="img_sp" optional="show"/>-->
+            </tree>
+
+        </field>
+    </record>
+    <record id="sp_record" model="ir.ui.view">
+        <field name="name">sanpham.kanban</field>
+        <field name="model">sanpham</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1">
+                <field name="id_sp"/>
+                <field name="name" optional="show"/>
+                <field name="descr" optional="show"/>
+                <field name="price" optional="show"/>
+                <field name="id_catesp" optional="show"/>
+                <field name="id_nhanviencsp" optional="show"/>
+                <!--                <field name="img_sp" optional="show"/>-->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image d_md_one d-m-block">
+                                <!--                                    <img class = "o_kanban_image_inner_pic"-->
+                                <!--                                         t-att-src = "kanban_image('sanpham','img_sp', record.id.raw_value)"/>-->
+                                <field name="img_sp" widget="image"/>
+
+                            </div>
+                            <div class="oe-kanban-detail d-flex flex-column">
+                                <p>
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                </p>
+                                <p>Giá:
+                                    <field name="price"/>
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="name_view_form">
+        <field name="name">Sản phẩm</field>
+        <field name="model">sanpham</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+
+                <sheet>
+                    <field name="img_sp" widget="image" class = "oe_avatar"/>
+                    <group>
+                        <group>
+                            <field name="id_sp"/>
+
+
+                        </group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+
+                        <group>
+                            <field name="price"/>
+
+                        </group>
+
+                        <group>
+                            <field name="id_catesp"/>
+                        </group>
+                        <group>
+                            <field name="id_nhanviencsp"/>
+                        </group>
+                        <group>
+                            <field name="kho_id"/>
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string = "Mô tả sản phẩm" name = "descr">
+                            <field name="descr"></field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+
+            </form>
+        </field>
+
+    </record>
+
+    <record id="action_sp" model="ir.actions.act_window">
+        <field name="name">Sản Phẩm</field>
+        <field name="res_model">sanpham</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+    <menuitem id="menu_qlqcf" name="Sản Phẩm" parent="sanpham" action="action_sp"/>
+</odoo>

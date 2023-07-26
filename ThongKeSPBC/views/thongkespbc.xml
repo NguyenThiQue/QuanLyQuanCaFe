@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="thongkespbcc" name="Sản phẩm bán chạy" sequence='2'
+              parent="ThongKe.thongke"
+    />
+    <record model="ir.ui.view" id="view_thongkesldh_search">
+        <field name="name">Search</field>
+        <field name="model">thongkespbc</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_donhang">
+        <field name="name">Thống kê sản phẩm bán chạy</field>
+        <field name="model">thongkespbc</field>
+
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="month" optional="show"/>
+                <field name="product_id" optional="show"/>
+                <field name="quantity" optional="show"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_monthly_revenue_form">
+        <field name="name">Số lượng sản phẩm bán chạy theo tháng</field>
+        <field name="model">thongkespbc</field>
+        <field name="arch" type="xml">
+            <form string="Số lượng đơn hàng theo tháng">
+                <sheet>
+                    <group>
+                        <field name="month"/>
+                        <field name="year"/>
+                        <field name="product_id"/>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="thongke_graph_view" model="ir.ui.view">
+        <field name="name">Biểu đồ số lượng sản phẩm bán chạy theo tháng</field>
+        <field name="model">thongkespbc</field>
+        <field name="arch" type="xml">
+            <graph >
+                <field name="month"/>
+                <field name="year"/>
+                <field name="product_id"/>
+                <field name="quantity"/>
+            </graph>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_monthly_thongkespbc">
+        <field name="name">Sản phẩm bán chạy theo tháng</field>
+        <field name="res_model">thongkespbc</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+
+    <menuitem id="menu_thongkespbc" name="Sản phẩm bán chạy" parent="thongkespbcc" action="action_monthly_thongkespbc"/>
+
+</odoo>

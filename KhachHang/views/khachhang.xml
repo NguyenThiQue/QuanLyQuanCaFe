@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id = "khachhangmenu" name = "Khách Hàng" sequence = '2'
+        parent="NguyenLieu.base_menu"
+    />
+
+    <record model="ir.ui.view" id="view_khachhang">
+        <field name="name">Khách Hàng</field>
+        <field name="model">khachhang</field>
+
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="id_khachhang" optional = "show"/>
+                <field name="name" optional = "show"/>
+                <field name="phone" optional = "show"/>
+                <field name="email" optional = "show"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="name_view_form">
+        <field name="name">Khách Hàng</field>
+        <field name="model">khachhang</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+               <sheet>
+                    <group>
+
+                        <group>
+                            <field name = "id_khachhang"></field>
+                            <field name = "name"></field>
+                        </group>
+
+                        <group>
+                            <field name = "phone"></field>
+                            <field name = "email"></field>
+                        </group>
+
+
+
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="action_khachhang" model="ir.actions.act_window">
+        <field name="name">Khách Hàng</field>
+        <field name="res_model">khachhang</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id = "menu_qlqcf" name = "Khách Hàng " parent = "khachhangmenu" action = "action_khachhang"/>
+</odoo>

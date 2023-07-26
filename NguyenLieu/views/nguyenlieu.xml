@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id = "base_menu" name = "QuanLyQuanCaFe" sequence = '1'/>
+
+    <record model="ir.ui.view" id="view_nguyenlieu">
+        <field name="name">nguyenlieu.tree</field>
+        <field name="model">nguyenlieu</field>
+
+        <field name="arch" type="xml">
+            <tree string="Danh sách nguyên liệu">
+
+                <field name="nguyenlieu_ma" optional = "show"/>
+                <field name="ma_ncc" optional = "show"/>
+                <field name="name" optional = "show"/>
+<!--                <field name="sp_dv_id" widget="many2many_kanban"/>-->
+                <field name="nguyenlieu_dv_id" optional = "show"/>
+
+                <field name="nguyenlieu_gianhap" optional = "show"/>
+                <field name="nguyenlieu_giaxuat" optional = "show"/>
+                <field name="nguyenlieu_giaxuat1" optional = "show"/>
+                <field name="nguyenlieu_giaxuat2" optional = "show"/>
+                 <field name="nguyenlieu_tondinhmuc" optional = "show"/>
+                <field name="nguyenlieu_tonthucte" optional = "show"/>
+                <field name="nguyenlieu_hinhanh" optional = "show"/>
+<!--                <field name="sp_store_fname" invisible = '1'/>-->
+<!--                <field name="sp_hinhanh" filename = 'store_fname' widget="attachment_image" class="ot_image"/>-->
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="nguyenlieu_view_form">
+        <field name="name">nguyenlieu.form</field>
+        <field name="model">nguyenlieu</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+               <sheet>
+                    <field name = "nguyenlieu_hinhanh" widget = "nguyenlieu_hinhanh" class = "oe_avatar"></field>
+                    <group>
+                        <group>
+                            <field name = "nguyenlieu_ma"></field>
+                            <field name = "name"></field>
+
+                        </group>
+
+                        <group>
+                            <field name = "nguyenlieu_dv_id"></field>
+                            <field name = "nguyenlieu_gianhap"></field>
+                        </group>
+
+                         <group>
+                            <field name = "nguyenlieu_giaxuat"></field>
+                            <field name = "nguyenlieu_giaxuat2"></field>
+                        </group>
+
+                         <group>
+                            <field name = "nguyenlieu_giaxuat1"></field>
+                            <field name = "nguyenlieu_tondinhmuc"></field>
+                        </group>
+
+                        <group>
+                            <field name = "nguyenlieu_tonthucte"></field>
+                            <field name = "ma_ncc"></field>
+                        </group>
+
+<!--                        <group>-->
+<!--                            <field name = "sp_store_fname"></field>-->
+<!--&lt;!&ndash;                            <field name = "sp_hinhanh"></field>&ndash;&gt;-->
+<!--                        </group>-->
+
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="action_qlqcf" model="ir.actions.act_window">
+        <field name="name"> Quản Lý quán cà phê </field>
+        <field name="res_model">nguyenlieu</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id = "menu_qlqcf" name = "Nguyên Liệu" parent = "base_menu" action = "action_qlqcf"/>
+</odoo>

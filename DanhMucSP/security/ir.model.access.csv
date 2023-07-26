@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_danhmucsp.user,QuanLyQuanCaPhe User,model_danhmucsp,danhmucsp_group_user,0,0,0,0
+access_danhmucsp.manager,QuanLyQuanCaPhe Manager,model_danhmucsp,danhmucsp_group_manager,1,1,1,1

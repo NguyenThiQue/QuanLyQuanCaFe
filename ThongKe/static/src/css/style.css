@@ -1,0 +1,45 @@
+.o_main_navbar {
+    background-color: #A9907E;
+}
+table>thead>tr {
+    background-color: #dad5cc;
+     height: 40px;
+     text-align: center;
+     color:#fff;
+}
+table>tbody>tr{
+    text-align: center;
+    text-transform: capitalize;
+    height: 30px;
+}
+
+.o_list_button_add,
+.o_form_button_save,
+.o_form_button_save_new{
+    background-color: #675D50;
+    border: none;
+}
+
+.o_list_button_add:hover,
+.o_form_button_save:hover,
+.o_form_button_save_new:hover{
+    background-color:#A9907E;
+}
+
+.o_list_export_xlsx,
+.o_form_button_cancel{
+    color: #675D50;
+}
+
+.o_list_export_xlsx:hover {
+    color:#A9907E;
+}
+
+.btn-outline-primary {
+    color: #F3DEBA;
+    border-color: #F3DEBA;
+}
+
+.py-0 {
+    color: #e5cea7;
+}

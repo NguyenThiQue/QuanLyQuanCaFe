@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<!--    <template id = "sale_report_inherit" inherit_id = "name_view_form">-->
+<!--&lt;!&ndash;        <xpath expr = "." position = "after">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;             <div class="row mt-4 mb-4" id="test_inherit">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                <div class="col-auto col-3 mw-100 mb-2" name="informations_reference">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <strong>test Reference:</strong>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                </div>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            </div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        </xpath>&ndash;&gt;-->
+<!--    </template>-->
+</odoo>

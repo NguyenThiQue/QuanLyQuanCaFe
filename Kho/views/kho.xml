@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="khomenu" name="Kho" sequence='2'
+              parent="NguyenLieu.base_menu"
+    />
+
+    <record model="ir.ui.view" id="view_kho">
+        <field name="name">Kho</field>
+        <field name="model">kho</field>
+
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" optional="show"/>
+                <field name="soluong" optional="show"/>
+<!--                <field name="diadiemluutru" optional="show"/>-->
+                <field name="diachi" optional="show"/>
+                <field name="category" optional="show"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="name_view_form">
+        <field name="name">Kho</field>
+        <field name="model">kho</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+                <sheet>
+                    <group>
+
+                        <group>
+                            <field name="name"></field>
+                            <field name="soluong" />
+                        </group>
+                        <group>
+                            <field name="diachi" />
+                            <field name="category"/>
+                        </group>
+
+                    </group>
+<!--                    <notebook>-->
+<!--                        <page String = "Cấu hình kho hàng" name = "Cấu hình kho hàng">-->
+<!--                            <field name="cauhinhkho"/>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="action_kho" model="ir.actions.act_window">
+        <field name="name">Kho</field>
+        <field name="res_model">kho</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_qlqcf" name="Kho " parent="khomenu" action="action_kho"/>
+</odoo>

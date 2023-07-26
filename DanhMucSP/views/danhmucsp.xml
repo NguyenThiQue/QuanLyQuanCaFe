@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id = "danhmucsp" name = "Loại sản phẩm" sequence = '2'
+        parent="SanPham.sanpham"
+    />
+
+    <record model="ir.ui.view" id="view_danhmucspp">
+        <field name="name">Danh mục sản phẩm</field>
+        <field name="model">danhmucsp</field>
+
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="id_category" optional = "show"/>
+                <field name="name" optional = "show"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="name_view_form">
+        <field name="name">Loại sản phẩm</field>
+        <field name="model">danhmucsp</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+               <sheet>
+                    <group>
+
+                        <group>
+                            <field name = "id_category"></field>
+                        </group>
+
+                        <group>
+                            <field name = "name"></field>
+                        </group>
+
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="action_dmsp" model="ir.actions.act_window">
+        <field name="name">Loại sản phẩm</field>
+        <field name="res_model">danhmucsp</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id = "menu_qlqcf" name = "Loại sản phẩm " parent = "danhmucsp" action = "action_dmsp"/>
+</odoo>

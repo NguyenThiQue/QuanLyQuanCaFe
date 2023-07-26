@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_donhang.user,QuanLyQuanCaPhe User,model_donhang,qlcf_group_user,0,0,0,0
+access_donhang.manager,QuanLyQuanCaPhe Manager,model_donhang,qlcf_group_manager,1,1,1,1

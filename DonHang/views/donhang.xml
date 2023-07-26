@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id = "donhangmenu" name = "Đơn hàng" sequence = '2'
+        parent="NguyenLieu.base_menu"
+    />
+
+    <record model="ir.ui.view" id="view_donhang">
+        <field name="name">Đơn Hàng</field>
+        <field name="model">donhang</field>
+
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="id_donhang" optional = "show"/>
+                <field name="id_khachhang" optional = "show"/>
+                <field name="id_nv" optional = "show"/>
+
+<!--                <field name="product_list" optional = "show"/>-->
+                <field name="tongdh" optional = "show"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="name_view_form">
+        <field name="name">Đơn Hàng</field>
+        <field name="model">donhang</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+               <sheet>
+                    <group>
+
+                        <group>
+                            <field name = "id_donhang"></field>
+                            <field name = "id_khachhang"></field>
+                        </group>
+
+
+
+                        <group>
+                            <field name = "id_nv"></field>
+
+                        </group>
+
+
+<!--                        <group>-->
+<!--                            <field name="product_list" widget = "many2many_tags">-->
+
+<!--                            </field>-->
+<!--                        </group>-->
+
+
+
+
+
+                    <notebook>
+                        <page String = "Chi tiết đơn hàng" name = "ct_donhang">
+                            <field name="ct_donhang"/>
+                        </page>
+                    </notebook>
+                    </group>
+                    <group>
+
+                            <field name = "tongdh"></field>
+                            <field name="ngaytaodh"/>
+                        </group>
+<!--                   <group>-->
+<!--                       <field name="month"/>-->
+<!--                   </group>-->
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="action_donhang" model="ir.actions.act_window">
+        <field name="name">Đơn Hàng</field>
+        <field name="res_model">donhang</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id = "menu_qlqcf" name = "Đơn Hàng " parent = "donhangmenu" action = "action_donhang"/>
+</odoo>

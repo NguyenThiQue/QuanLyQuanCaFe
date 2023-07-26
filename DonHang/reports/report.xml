@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <report
+        id ="report_donhang_card"
+        string = "In hoá đơn"
+        model = "donhang"
+        report_type = "qweb-pdf"
+        name = "DonHang.report_don"
+        file = "DonHang.report_don"
+    />
+</odoo>

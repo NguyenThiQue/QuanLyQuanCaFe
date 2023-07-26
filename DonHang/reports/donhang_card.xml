@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--    <template id="report_donhang_cards">-->
+    <!--        <t t-call="web.html_container">-->
+    <!--            <t t-foreach = "docs" t-as = "doc">-->
+    <!--                <h2>Đơn hàng test</h2>-->
+    <!--            </t>-->
+    <!--        </t>-->
+    <!--    </template>-->
+
+
+    <template id="report_don">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+
+                <t t-call="web.internal_layout">
+                    <div class="page">
+
+                        ID đơn hàng :<span t-field = "doc.id_donhang"/><br></br>
+                        ID nhân viên:        <span t-field= "doc.id_nv"/><br></br>
+                             ID khách hàng:   <span t-field = "doc.id_khachhang"/><br></br>
+                        <br></br>
+                        <t t-if = "doc.ct_donhang">
+                            <span>Chi tiết đơn hàng</span>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <span>STT</span>
+                                        </th>
+                                        <th name = "th_ctdh" class = "text-left">
+                                            <span>Sản phẩm </span>
+                                        </th>
+                                        <th name = "th_price" class = "text-left">
+                                            <span>Giá</span>
+                                        </th>
+                                        <th name = "th_qquantity" class = "text-left">
+                                            <span>Số lượng</span>
+                                        </th>
+                                        <th name = "th_totalprice" class = "text-left">
+                                            <span>Tổng giá cho sản phẩm</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <t t-foreach="doc.ct_donhang" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <span t-esc = "line_index +1"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_item_id"></span>
+                                        </td><td>
+                                            <span t-field="line.gia"></span>
+                                        </td><td>
+                                            <span t-field="line.quantity"></span>
+                                        </td><td>
+                                            <span t-field="line.tonggiasp"></span>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                            </table>
+                        </t>
+                             Tổng đơn hàng:   <t t-esc = "doc.tongdh"/><br></br>
+
+                    </div>
+                </t>
+            </t>
+
+        </t>
+    </template>
+</odoo>
+

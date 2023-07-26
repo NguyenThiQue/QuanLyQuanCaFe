@@ -1,0 +1,21 @@
+<odoo>
+    <data noupdate = "0">
+
+        <record id = "base.module_category_services_thongkesldonhang" model = "ir.module.category">
+            <field name = "name">Quan ly quan ca phe</field>
+            <field name = "Sequence">1</field>
+        </record>
+
+        <record id="qlcf_group_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="base.module_category_services_thongkesldonhang" />
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="qlcf_group_manager" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="base.module_category_services_thongkesldonhang" />
+            <field name="implied_ids" eval="[(4, ref('qlcf_group_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_root')),(4, ref('base.user_admin'))]"/>
+        </record>
+    </data>
+</odoo>
