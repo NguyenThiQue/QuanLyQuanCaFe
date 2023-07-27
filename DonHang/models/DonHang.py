@@ -16,7 +16,26 @@ class DonHang(models.Model):
     ct_donhang = fields.One2many("ctdonhang", "hoadon_id", string="Chi tiết đơn hàng")
     id_khachhang = fields.Many2one("khachhang", string="Khách hàng", required = True)
     ngaytaodh = fields.Date(string="Ngày tạo đơn hàng")
-    # month = fields.Char(string='Month')
+    # confirmed = fields.Boolean(string='Xác nhận', default=False)
+
+    state = fields.Selection([('draft', 'Draft'), ('confirm', 'Confirmed'),
+                              ('done', 'Done'), ('cancel', 'Cancelled')
+                              ], default='draft', string='Status')
+
+    # def confirm_order(self):
+    #     self.write({'confirmed': True, 'confirmation_date': fields.Date.today()})
+
+    def action_confirm(self):
+        self.state = 'confirm'
+
+    def action_done(self):
+        self.state = 'done'
+
+    def action_draft(self):
+        self.state = "draft"
+
+    def action_cancel(self):
+        self.state = "cancel"
 
     @api.depends('ct_donhang')
     def _compute_price_total(self):

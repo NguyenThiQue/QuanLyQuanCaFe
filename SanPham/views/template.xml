@@ -4,4 +4,5 @@
                 <link href="/SanPham/static/src/css/style.css" rel="stylesheet" type="text/css"/>
             </xpath>
     </template>
+
 </odoo>

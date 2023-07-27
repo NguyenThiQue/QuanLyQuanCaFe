@@ -43,3 +43,13 @@ table>tbody>tr{
 .py-0 {
     color: #e5cea7;
 }
+
+.dynamic-color-red {
+  color: white;
+  background-color: red;
+}
+
+.dynamic-color-green {
+  color: white;
+  background-color: green;
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <menuitem id = "donhangmenu" name = "Đơn hàng" sequence = '2'
-        parent="NguyenLieu.base_menu"
+    <menuitem id="donhangmenu" name="Đơn hàng" sequence='2'
+              parent="NguyenLieu.base_menu"
     />
 
     <record model="ir.ui.view" id="view_donhang">
@@ -9,13 +9,22 @@
         <field name="model">donhang</field>
 
         <field name="arch" type="xml">
-            <tree string="">
-                <field name="id_donhang" optional = "show"/>
-                <field name="id_khachhang" optional = "show"/>
-                <field name="id_nv" optional = "show"/>
+            <tree string="" decoration-success = "state == 'done'"
+                    decoration-info = "state == 'draft'"
+                    decoration-danger = "state == 'cancel'"
+                    decoration-warning = "state == 'confirm'">
+                <field name="id_donhang" optional="show"/>
+                <field name="id_khachhang" optional="show"/>
+                <field name="id_nv" optional="show"/>
 
-<!--                <field name="product_list" optional = "show"/>-->
-                <field name="tongdh" optional = "show"/>
+                <!--                <field name="product_list" optional = "show"/>-->
+                <field name="tongdh" optional="show"/>
+                <field name="state" optional="show" widget="badge"
+                    decoration-success = "state == 'done'"
+                    decoration-info = "state == 'draft'"
+                    decoration-danger = "state == 'cancel'"
+                    decoration-warning = "state == 'confirm'"
+                />
 
             </tree>
         </field>
@@ -26,46 +35,44 @@
 
         <field name="arch" type="xml">
             <form string="Idea form">
-               <sheet>
+                <header>
+                    <button id = "button_confirm" name = "action_confirm" type = "object" string = "Confirm" class = "btn-primary" states = "draft"/>
+                    <button id = "button_done" name = "action_done" type = "object" string = "Done" class = "btn-primary" states = "confirm"
+                            />
+                    <button id="button_draft" name = "action_draft" type = "object" string = "Set to draft" class = "btn-primary" states = "cancel"/>
+                    <button id="button_cancel" name = "action_cancel" type = "object" string = "Cancel" states = "draft,done,confirm"/>
+                    <field name="state" widget = "statusbar" status_visible = "draft,confirm,done"/>
+                </header>
+                <sheet>
                     <group>
 
                         <group>
-                            <field name = "id_donhang"></field>
-                            <field name = "id_khachhang"></field>
+                            <field name="id_donhang"></field>
+                            <field name="id_khachhang"></field>
                         </group>
-
 
 
                         <group>
-                            <field name = "id_nv"></field>
+                            <field name="id_nv"></field>
 
                         </group>
 
 
-<!--                        <group>-->
-<!--                            <field name="product_list" widget = "many2many_tags">-->
-
-<!--                            </field>-->
-<!--                        </group>-->
-
-
-
-
-
-                    <notebook>
-                        <page String = "Chi tiết đơn hàng" name = "ct_donhang">
-                            <field name="ct_donhang"/>
-                        </page>
-                    </notebook>
+                        <notebook>
+                            <page String="Chi tiết đơn hàng" name="ct_donhang">
+                                <field name="ct_donhang"/>
+                            </page>
+                        </notebook>
                     </group>
                     <group>
 
-                            <field name = "tongdh"></field>
-                            <field name="ngaytaodh"/>
-                        </group>
-<!--                   <group>-->
-<!--                       <field name="month"/>-->
-<!--                   </group>-->
+                        <field name="tongdh"></field>
+                        <field name="ngaytaodh"/>
+                    </group>
+<!--                    <group>-->
+<!--                        <field name="state"></field>-->
+
+<!--                    </group>-->
                 </sheet>
 
             </form>
@@ -77,5 +84,6 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id = "menu_qlqcf" name = "Đơn Hàng " parent = "donhangmenu" action = "action_donhang"/>
+    <menuitem id="menu_qlqcf" name="Đơn Hàng " parent="donhangmenu" action="action_donhang"/>
+
 </odoo>

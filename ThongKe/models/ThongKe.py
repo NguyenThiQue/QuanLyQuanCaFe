@@ -25,7 +25,7 @@ class Thongke(models.Model):
         # orders = self.env['donhang'].search(
         #     [('ngaytaodh', '>=', f'{year}-{month}-01'), ('ngaytaodh', '<=', f'{year}-{month}-31')])
         orders = self.env['donhang'].search(
-            [('ngaytaodh', '>=', f'{year}-{month}-01'), ('ngaytaodh', '<=', f'{year}-{month}-30')])
+            [('state', '=', 'done'),('ngaytaodh', '>=', f'{year}-{month}-01'), ('ngaytaodh', '<=', f'{year}-{month}-30')])
 
         revenue = sum(order.tongdh for order in orders)
 
