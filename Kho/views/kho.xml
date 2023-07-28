@@ -12,9 +12,9 @@
             <tree string="">
                 <field name="name" optional="show"/>
                 <field name="soluong" optional="show"/>
-<!--                <field name="diadiemluutru" optional="show"/>-->
                 <field name="diachi" optional="show"/>
                 <field name="category" optional="show"/>
+                <field name="donvi" optional="show"/>
             </tree>
         </field>
     </record>
@@ -31,17 +31,15 @@
                             <field name="name"></field>
                             <field name="soluong" />
                         </group>
+                        <group><field name="soluongthucte"/> </group>
                         <group>
                             <field name="diachi" />
                             <field name="category"/>
                         </group>
+                        <group><field name="donvi"/> </group>
 
                     </group>
-<!--                    <notebook>-->
-<!--                        <page String = "Cấu hình kho hàng" name = "Cấu hình kho hàng">-->
-<!--                            <field name="cauhinhkho"/>-->
-<!--                        </page>-->
-<!--                    </notebook>-->
+
                 </sheet>
 
             </form>

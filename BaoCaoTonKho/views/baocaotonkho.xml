@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="baocaotonkho_id" name="Báo cáo tồn kho" sequence='2'
+              parent="Kho.khomenu"
+    />
+
+    <record model="ir.ui.view" id="view_baocaotonkhoo">
+        <field name="name">Báo cáo tồn kho</field>
+        <field name="model">baocaotonkho</field>
+
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="sanpham_item_id" optional="show"/>
+                <field name="tenkho" optional="show"/>
+                <field name="soluongthucte" optional="show"/>
+                <field name="soluonghienco" optional="show"/>
+                <field name="totalprice" optional="show"/>
+
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="name_view_form">
+        <field name="name">Báo cáo tồn kho</field>
+        <field name="model">baocaotonkho</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+                <sheet>
+                    <group>
+
+                        <group>
+                            <field name="sanpham_item_id"></field>
+                            <field name="tenkho"></field>
+                        </group>
+
+
+                        <group>
+                            <field name="soluongthucte"></field>
+                            <field name="soluonghienco"></field>
+                        </group>
+                        <group><field name="totalprice"/> </group>
+
+                    </group>
+
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="thongke_graph_view" model="ir.ui.view">
+        <field name="name">Biểu đồ báo cáo tồn kho</field>
+        <field name="model">baocaotonkho</field>
+        <field name="arch" type="xml">
+            <graph >
+                <field name="tenkho"/>
+                <field name="soluongthucte"/>
+                <field name="soluonghienco"/>
+                <field name="totalprice"/>
+            </graph>
+        </field>
+    </record>
+    <record id="action_baocaotonkho" model="ir.actions.act_window">
+        <field name="name">Báo cáo tồn kho</field>
+        <field name="res_model">baocaotonkho</field>
+        <field name="view_mode">tree,form,graph</field>
+    </record>
+
+    <menuitem id="menu_qlqcf" name="Báo cáo tồn kho" parent="baocaotonkho_id" action="action_baocaotonkho"/>
+</odoo>

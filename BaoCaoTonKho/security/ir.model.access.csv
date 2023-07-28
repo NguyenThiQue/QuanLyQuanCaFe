@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_baocaotonkho.user,QuanLyQuanCaPhe User,model_baocaotonkho,qlcf_group_user,0,0,0,0
+access_baocaotonkho.manager,QuanLyQuanCaPhe Manager,model_baocaotonkho,qlcf_group_manager,1,1,1,1
