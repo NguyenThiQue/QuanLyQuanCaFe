@@ -98,10 +98,11 @@
                         </group>
                         <group>
                             <field name="id_nhanviencsp"/>
-                        </group>
-                        <group>
                             <field name="kho_id"/>
                         </group>
+<!--                        <group>-->
+<!--                            <field name="kho_id"/>-->
+<!--                        </group>-->
 
                     </group>
                     <notebook>

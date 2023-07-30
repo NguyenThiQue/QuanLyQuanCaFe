@@ -12,7 +12,13 @@ class SanPham(models.Model):
     price = fields.Float(string="Giá sản phẩm")
     id_catesp = fields.Many2one("danhmucsp", string="Loại sản phẩm", required = True)
     id_nhanviencsp = fields.Many2one("nhanvien", string="Mã nhân viên", required = True)
-    kho_id = fields.Many2one("kho", string="Kho")
+    kho_id = fields.Char(string="Kho", compute = "_compute_kho")
+
+    @api.depends("id_catesp")
+    def _compute_kho(self):
+        for i in self:
+            kho = i.id_catesp.id_kho.name
+            i.kho_id = kho
 
 
 class DanhMucSP(models.Model):

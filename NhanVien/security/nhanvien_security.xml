@@ -3,7 +3,7 @@
 
         <record id = "base.module_category_services_nhanvien" model = "ir.module.category">
             <field name = "name">Quan ly quan ca phe</field>
-            <field name = "Sequence">1</field>
+            <field name = "sequence">1</field>
         </record>
 
         <record id="qlcf_group_user" model="res.groups">

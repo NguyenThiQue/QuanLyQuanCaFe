@@ -16,6 +16,7 @@
                 <field name="gia" optional="show"/>
                 <field name="quantity" optional="show"/>
                 <field name="tonggiasp" optional="show"/>
+                <field name="kho_idd" optional="show"/>
 
             </tree>
         </field>
@@ -37,6 +38,7 @@
                         <group>
 <!--                            <field name="id_masp"></field>-->
                             <field name="gia"></field>
+                            <field name="kho_idd"></field>
 
                         </group>
 

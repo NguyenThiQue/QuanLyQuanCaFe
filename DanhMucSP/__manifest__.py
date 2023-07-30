@@ -19,7 +19,7 @@
     'category': 'Services/danhmucsp',
     'version': '16.0.0.1',
 
-    'depends': ['base'],
+    'depends': ['base', 'Kho'],
 
     # always loaded
     'data': [

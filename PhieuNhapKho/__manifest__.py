@@ -16,34 +16,25 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Services/SanPham',
+    'category': 'Services/PhieuNhapKho',
     'version': '16.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'DanhMucSP', 'NhanVien', 'web'],
+    'depends': ['base', 'SanPham','Kho'],
 
     # always loaded
     'data': [
 
-        'security/sanpham_security.xml',
+        'security/phieunhapkho_security.xml',
         'security/ir.model.access.csv',
 
-        "views/sanpham.xml",
-        # "views/login.xml",
+        "views/phieunhapkho.xml",
 
     ],
-    'sequence': 1,
+    'sequence':1,
     'application': True,
     # only loaded in demonstration mode
     'demo': [
         # 'demo/demo.xml',
     ],
-    'assets': {
-        'web.assets_backend': [
-            '/SanPham/static/src/css/style.css',
-        ],
-        # 'web.assets_frontend': [
-        #     '/SanPham/static/src/js/bootstrap.js',
-        # ]
-    },
 }
