@@ -9,13 +9,29 @@
         <field name="model">baocaotonkho</field>
 
         <field name="arch" type="xml">
-            <tree string="">
+<!--            <tree string="">-->
+<!--&lt;!&ndash;                <field name="sanpham_item_id" optional="show"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="tenkho" optional="show"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="soluongthucte" optional="show"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="soluonghienco" optional="show"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="totalprice" optional="show"/>&ndash;&gt;-->
+
+
+<!--            </tree>-->
+            <tree string="" decoration-success = "state == 'done'"
+                    decoration-info = "state == 'draft'"
+                    decoration-warning = "state == 'confirm'">
+<!--                <field name="name" optional="show"/>-->
                 <field name="sanpham_item_id" optional="show"/>
-                <field name="tenkho" optional="show"/>
                 <field name="soluongthucte" optional="show"/>
                 <field name="soluonghienco" optional="show"/>
                 <field name="totalprice" optional="show"/>
 
+                <field name="state" optional="show" widget="badge"
+                    decoration-success = "state == 'done'"
+                    decoration-info = "state == 'draft'"
+                    decoration-warning = "state == 'confirm'"
+                />
 
             </tree>
         </field>
@@ -26,20 +42,25 @@
 
         <field name="arch" type="xml">
             <form string="Idea form">
+                <header>
+                    <button id = "button_confirm" name = "action_confirm" type = "object" string = "Confirm" class = "btn-primary" states = "draft"/>
+                    <button id = "button_done" name = "action_done" type = "object" string = "Done" class = "btn-primary" states = "confirm"
+                            />
+                    <button id="button_draft" name = "action_draft" type = "object" string = "Set to draft" class = "btn-primary" states = "draft"/>
+                    <field name="state" widget = "statusbar" status_visible = "draft,confirm,done"/>
+                </header>
                 <sheet>
                     <group>
 
-                        <group>
-                            <field name="sanpham_item_id"></field>
-                            <field name="tenkho"></field>
-                        </group>
 
 
                         <group>
-                            <field name="soluongthucte"></field>
-                            <field name="soluonghienco"></field>
+                            <field name="sanpham_item_id"/>
+                            <field name="soluongthucte"/>
+                            <field name="soluonghienco"/>
+                            <field name="totalprice"/>
+
                         </group>
-                        <group><field name="totalprice"/> </group>
 
                     </group>
 
@@ -54,7 +75,7 @@
         <field name="model">baocaotonkho</field>
         <field name="arch" type="xml">
             <graph >
-                <field name="tenkho"/>
+                <field name="sanpham_item_id"/>
                 <field name="soluongthucte"/>
                 <field name="soluonghienco"/>
                 <field name="totalprice"/>

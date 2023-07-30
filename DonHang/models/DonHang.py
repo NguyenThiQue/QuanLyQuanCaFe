@@ -22,8 +22,7 @@ class DonHang(models.Model):
                               ('done', 'Done'), ('cancel', 'Cancelled')
                               ], default='draft', string='Status')
 
-    # def confirm_order(self):
-    #     self.write({'confirmed': True, 'confirmation_date': fields.Date.today()})
+
 
     def action_confirm(self):
         self.state = 'confirm'
