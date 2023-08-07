@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="website_shopping_cart_page">
+        <t t-call="website.layout">
+            <t t-set="page_title">Shopping Cart</t>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Subtotal</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="shopping_cart" t-as="item">
+                                    <td>
+                                        <t t-esc="item.product_item_id.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="item.quantity"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="item.gia"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="item.gia * item.quantity"/>
+
+                                    </td>
+                                    <td>
+
+
+                                        <button class="btn btn-sm btn-secondary"
+                                                t-att-data-product-item-id="item.product_item_id.id"
+                                                t-att-data-quantity="item.quantity"
+                                                onclick="updateQuantityCart(this.dataset.productItemId, parseInt(this.dataset.quantity) - 1)">
+                                            -
+                                        </button>
+                                        <t t-esc="item.quantity"/>
+                                        <button class="btn btn-sm btn-secondary"
+                                                t-att-data-product-item-id="item.product_item_id.id"
+                                                t-att-data-quantity="item.quantity"
+                                                onclick="updateQuantityCart(this.dataset.productItemId, parseInt(this.dataset.quantity) + 1)">
+                                            +
+                                        </button>
+
+
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-danger"
+                                                t-att-data-product-item-id="item.product_item_id.id"
+                                                onclick="removeFromCart(this.dataset.productItemId)">Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+<!--                        <a t-if="shopping_cart" class="btn btn-primary" href="/api/get_cart" style="float: right;">Thanh-->
+<!--                            toán-->
+<!--                        </a>-->
+                        <a t-if="shopping_cart" class="btn btn-primary" style="float: right;">  <button id="btnCreateOrder">Thanh Toán</button>
+                        </a>
+                        <p t-if="not shopping_cart">Giỏ hàng trống</p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

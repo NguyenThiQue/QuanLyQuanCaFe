@@ -1,27 +1,84 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
+from odoo.http import request
+
 
 class CTDonHang(models.Model):
     _name = 'ctdonhang'
 
     _table = "CTDonHang"
     _description = ''
-    id_ctdonhang = fields.Char(string="Mã chi tiết đơn hàng")
-    # id_donhang = fields.Char(string = "Mã đơn hàng")
-    # id_masp = fields.Char(string="Mã sản phẩm")
+    # id_ctdonhang = fields.Char(string="Mã chi tiết đơn hàng")
+
     gia = fields.Float(compute='_compute_price',string="Giá")
     quantity = fields.Integer(string="Số lượng")
     tonggiasp = fields.Float(compute = '_compute_price_total',string="Tổng giá cho sản phẩm")
 
 
-    # product_list = fields.Many2many("sanpham", "product_order_detail_re", "id_ctdonhang", "id_sp", string="Sản Phẩm")
 
     product_item_id = fields.Many2one("sanpham", string="Sản phẩm")
-    # hoadon_id = fields.Many2one("donhang", String = "Hoá đơn")
-    # kho_id = fields.Many2one("kho", string="Kho", related="product_item_id.kho_id")
+
     kho_idd = fields.Many2one("kho", string="Kho")
 
     phieunhapkho_id = fields.Many2one("phieunhapkho", string="Phiếu nhập kho")
 
+    id_nhanvien  = fields.Many2one("nhanvien", string="Nhân viên")
+
+    # def create_donhang_from_giohang(self):
+    #     # gio_hang = self.env['ctdonhang'].sudo().search([('id_nhanvien', '=', self.env.user.id_nhanvien.id)])
+    #     gio_hang = self.env['ctdonhang'].sudo().search([])
+    #     if not gio_hang:
+    #         return False
+    #
+    #     donhang_model = self.env['donhang']
+    #     donhang = donhang_model.sudo().create({
+    #         # 'id_nv': self.env.user.id_nhanvien.id,
+    #         'id_khachhang': False,  # Gán id_khachhang là False hoặc bạn có thể nhập thông tin khách hàng mong muốn
+    #         'ngaytaodh': fields.Date.today(),
+    #     })
+    #
+    #     for item in gio_hang:
+    #         donhang.ct_donhang = [(0, 0, {
+    #             'donhang_id': donhang.id,
+    #             'product_item_id': item.product_item_id.id,
+    #             'quantity': item.quantity,
+    #         })]
+    #
+    #
+    #     donhang.tongdh = sum(item.tonggiasp for item in gio_hang)
+    #
+    #     gio_hang.unlink()
+    #
+    #     return True
+
+    @classmethod
+    def create_order_from_cart(cls, cart_data):
+        try:
+            # Tạo đơn hàng mới
+            order = request.env['donhang'].create({})
+
+            # Lấy danh sách sản phẩm và số lượng từ giỏ hàng
+            products = cart_data.get('products', [])
+
+            # Tạo các sản phẩm trong đơn hàng
+            for product_data in products:
+                product_item_id = product_data.get('product_item_id')
+                quantity = product_data.get('quantity')
+
+                # Kiểm tra nếu sản phẩm tồn tại
+                product = request.env['ctdonhang'].browse(int(product_item_id))
+                if product:
+                    product.create({
+                        'name': product.name,
+                        'quantity': int(quantity),
+                        'donhang_id': order.id,
+                    })
+
+            return {'success': True, 'order_id': order.id}
+        except ValidationError as e:
+            return {'error': str(e)}
+        except Exception as ex:
+            return {'error': str(ex)}
 
     @api.depends('product_item_id')
     def _compute_price(self):
@@ -34,61 +91,13 @@ class CTDonHang(models.Model):
         for record in self:
             record.tonggiasp = record.gia * record.quantity
 
+
+
     #-----------------------------------------
 
 
-    # print("x", total_stock_quantity)
-    @api.onchange('quantity')
-    def onchange_quantity(self):
-        # Lấy số lượng sản phẩm
-        product_quantity = self.quantity
 
-        # Lấy số lượng sản phẩm trong kho
-        # product_in_stock = self.kho_id.soluong
-        #---------------------------------------------------
-        # if self.kho_id.phieunhapkho_ids.sanpham_id == self.product_item_id:
-        #
-        #     product_in_stock = self.kho_id.phieunhapkho_ids.soluong
-        #     print("sl", product_in_stock)
-            # Lấy số lượng sản phẩm tồn kho thực tế từ các phiếu nhập kho liên quan đến sản phẩm
-        # Lấy danh sách phiếu nhập kho liên quan đến sản phẩm và kho hiện tại
 
-        related_phieunhapkho = self.env['phieunhapkho'].search([
-            ('sanpham_id', '=', self.product_item_id.id),
-            ('kho_id', '=', self.kho_idd.id)
-        ])
-
-        # Tính lại giá cho sản phẩm
-        # self._compute_price()
-        # Tính tổng số lượng thực tế từ các phiếu nhập kho đã lấy
-        total_stock_quantity = sum(related_phieunhapkho.mapped('soluong'))
-        print("total", total_stock_quantity)
-
-        # Kiểm tra xem số lượng sản phẩm cần đặt hàng có lớn hơn
-        # số lượng tồn kho thực tế hay không
-        if product_quantity > total_stock_quantity:
-            # Nếu số lượng sản phẩm cần đặt hàng lớn hơn số lượng tồn kho thực tế
-            # thì hiển thị thông báo lỗi và đặt số lượng sản phẩm trong kho là 0
-            raise models.ValidationError('Không đủ số lượng sản phẩm trong kho!')
-            # self.phieunhapkho_id.soluong = 0
-        else:
-            for phieunhapkho in related_phieunhapkho:
-                phieunhapkho.soluong -= product_quantity
-                print("còn lại", phieunhapkho.soluong)
-        #-------------------------------------------------------
-
-        # #Kiểm tra xem số lượng sản phẩm cần đặt hàng có lớn hơn
-        # #số lượng sản phẩm trong kho hay không
-        # if product_quantity > total_stock_quantity:
-        #     # Nếu số lượng sản phẩm cần đặt hàng lớn hơn số lượng sản phẩm trong kho
-        #     # thì hiển thị thông báo lỗi và đặt số lượng sản phẩm trong kho là 0
-        #     raise models.ValidationError('Không đủ số lượng sản phẩm trong kho!')
-        #     self.kho_id.phieunhapkho_ids.soluong = 0
-        # else:
-        #     # Cập nhật số lượng sản phẩm trong kho
-        #     self.kho_id.phieunhapkho_ids.soluong -= product_quantity
-
-        #=----------------------------------------------------------------
 
 
 
@@ -103,6 +112,7 @@ class SanPham(models.Model):
 class PhieuNhapKho(models.Model):
     _inherit = "phieunhapkho"
     ctdh = fields.One2many("ctdonhang","phieunhapkho_id", string="Chi tiết đơn hàng")
+
 
 
 

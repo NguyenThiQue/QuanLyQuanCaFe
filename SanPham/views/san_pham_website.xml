@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="product_item">
+        <t t-call="website.layout">
+            <title>Sản phẩm</title>
+            <div class="container">
+                <div class="row g-2">
+                    <t t-foreach="product_list" t-as="item">
+
+                        <div class="col-4">
+                            <div class="p-3 border">
+                                <div class="card text-center" style="width: 18rem;">
+                                    <img t-if="item.img_sp"
+                                         t-att-src="'data:image/jpeg;base64,' + item.img_sp.decode('utf-8')"
+                                         class="card-img-top" alt="..."/>
+
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            <t t-esc="item.name"/>
+                                        </p>
+                                        <p class="card-text">
+                                            <t t-esc="item.price"/>
+                                        </p>
+                                        <a t-attf-href="/sanpham/{{slug(item)}}" class="btn btn-primary">Xem thêm</a>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                </div>
+            </div>
+
+
+        </t>
+
+    </template>
+
+    <template id="product_item_detail">
+        <t t-call="website.layout">
+            <div class="oe_structure">
+                <div class="container">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img t-if="product_detail.img_sp"
+                                     t-att-src="'data:image/jpeg;base64,' + product_detail.img_sp.decode('utf-8')"
+                                     class="img-fluid rounded-start" alt="..."/>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <t t-esc="product_detail.name"/>
+                                    </h5>
+                                    <p class="card-text">
+                                        <t t-esc="product_detail.descr"/>
+                                    </p>
+                                    <p class="card-text">
+                                        <small class="text-muted">
+                                            Giá:
+                                            <t t-esc="product_detail.price"/>
+                                        </small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <xpath expr="//div[@id='wrapwrap']" position="inside">
+                        <div id="website_sale">
+                            <!--                             <button type="button" class="btn btn-success"-->
+                            <!--                                t-att-data-product-detail="json.dumps(product_detail)"-->
+                            <!--                                onclick="addToCart(json.parse(this.dataset.productDetail))">Add to Cart-->
+                            <!--                        </button>-->
+
+                            <!--                             <button type="button" class="btn btn-success"-->
+                            <!--                                t-att-data-product-id="product_detail.id"-->
+                            <!--                                onclick="addToCart(this.dataset.productId, 1)">Add to Cart-->
+                            <!--                        </button>-->
+                            <button type="button" class="btn btn-success"
+                                    t-att-data-product-id="product_detail.id"
+                                    t-att-data-quantity="1"
+                                    onclick="addToCart(this.dataset.productId, this.dataset.quantity)">Add to Cart
+                            </button>
+
+
+                        </div>
+                    </xpath>
+
+
+                </div>
+            </div>
+
+        </t>
+
+    </template>
+
+
+</odoo>

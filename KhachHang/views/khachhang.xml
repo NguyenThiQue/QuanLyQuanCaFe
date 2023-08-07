@@ -10,7 +10,7 @@
 
         <field name="arch" type="xml">
             <tree string="">
-                <field name="id_khachhang" optional = "show"/>
+<!--                <field name="id_khachhang" optional = "show"/>-->
                 <field name="name" optional = "show"/>
                 <field name="phone" optional = "show"/>
                 <field name="email" optional = "show"/>
@@ -28,7 +28,7 @@
                     <group>
 
                         <group>
-                            <field name = "id_khachhang"></field>
+<!--                            <field name = "id_khachhang"></field>-->
                             <field name = "name"></field>
                         </group>
 

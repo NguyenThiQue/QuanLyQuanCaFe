@@ -2,7 +2,12 @@
      <template id="assets_backend" name="login" inherit_id="web.assets_backend">-->
             <xpath expr="." position="inside">
                 <link href="/SanPham/static/src/css/style.css" rel="stylesheet" type="text/css"/>
+                <link href="/SanPham/static/src/css/bootstrap.css" rel="stylesheet" type="text/css"/>
             </xpath>
     </template>
-
+    <template id="assets_frontend" name="shoppingcard" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/SanPham/static/src/js/myjs.js"></script>
+        </xpath>
+    </template>
 </odoo>

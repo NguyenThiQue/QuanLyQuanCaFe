@@ -1,0 +1,27 @@
+<!-- nhanvien/views/login_view.xml -->
+<odoo>
+    <!-- Define the login_template -->
+    <template id="login_template">
+        <!-- Extend the web.layout template with the login form -->
+        <!-- Add your custom login form content here -->
+        <t t-call="website.layout">
+            <div class="oe_website_login_container">
+                <form t-attf-action="/nhanvien/login" method="post" class="oe_login_form">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="mb-3 field-login">
+                        <label for="username" class="form-label">Tên đăng nhập:</label>
+                        <input type="text" name="username" required="true" class="form-control "/>
+                    </div>
+                    <div style="margin: 12px 0;">
+                        <label for="password" class="form-label">Mật khẩu:</label>
+                        <input type="password" name="password" required="true" class="form-control "/>
+                    </div>
+                    <div class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 pt-3">
+                        <button type="submit" class="btn btn-primary btn_cta">Đăng nhập</button>
+
+                    </div>
+                </form>
+            </div>
+        </t>
+    </template>
+</odoo>

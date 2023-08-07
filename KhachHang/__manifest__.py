@@ -25,10 +25,10 @@
     # always loaded
     'data': [
 
-        'security/kho_security.xml',
+        'security/khachhang_security.xml',
         'security/ir.model.access.csv',
 
-        "views/kho.xml",
+        "views/khachhang.xml",
 
     ],
     'sequence':1,

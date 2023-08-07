@@ -10,7 +10,7 @@
 
         <field name="arch" type="xml">
 <!--            <tree string="">-->
-<!--&lt;!&ndash;                <field name="sanpham_item_id" optional="show"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <field name="nguyenlieu_item_id" optional="show"/>&ndash;&gt;-->
 <!--&lt;!&ndash;                <field name="tenkho" optional="show"/>&ndash;&gt;-->
 <!--&lt;!&ndash;                <field name="soluongthucte" optional="show"/>&ndash;&gt;-->
 <!--&lt;!&ndash;                <field name="soluonghienco" optional="show"/>&ndash;&gt;-->
@@ -22,7 +22,7 @@
                     decoration-info = "state == 'draft'"
                     decoration-warning = "state == 'confirm'">
 <!--                <field name="name" optional="show"/>-->
-                <field name="sanpham_item_id" optional="show"/>
+                <field name="nguyenlieu_item_id" optional="show"/>
                 <field name="soluongthucte" optional="show"/>
                 <field name="soluonghienco" optional="show"/>
                 <field name="totalprice" optional="show"/>
@@ -55,7 +55,7 @@
 
 
                         <group>
-                            <field name="sanpham_item_id"/>
+                            <field name="nguyenlieu_item_id"/>
                             <field name="soluongthucte"/>
                             <field name="soluonghienco"/>
                             <field name="totalprice"/>
@@ -75,7 +75,7 @@
         <field name="model">baocaotonkho</field>
         <field name="arch" type="xml">
             <graph >
-                <field name="sanpham_item_id"/>
+                <field name="nguyenlieu_item_id"/>
                 <field name="soluongthucte"/>
                 <field name="soluonghienco"/>
                 <field name="totalprice"/>

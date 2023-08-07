@@ -20,18 +20,18 @@
     'version': '16.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','website'],
 
     # always loaded
     'data': [
-
         'security/nhanvien_security.xml',
         'security/ir.model.access.csv',
 
         "views/nhanvien.xml",
+        'views/login_view.xml',
 
     ],
-    'sequence':1,
+    'sequence': 1,
     'application': True,
     # only loaded in demonstration mode
     'demo': [

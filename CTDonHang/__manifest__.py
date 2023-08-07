@@ -20,7 +20,7 @@
     'version': '16.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'SanPham', 'Kho','PhieuNhapKho'],
+    'depends': ['base', 'SanPham', 'Kho', 'PhieuNhapKho', 'NhanVien'],
 
     # always loaded
     'data': [
@@ -29,12 +29,23 @@
         'security/ir.model.access.csv',
 
         "views/ctdonhang.xml",
+        "views/cart_page.xml",
+        # "views/shopping_cart.xml",
 
     ],
-    'sequence':1,
+    'sequence': 1,
     'application': True,
     # only loaded in demonstration mode
     'demo': [
         # 'demo/demo.xml',
     ],
+    'assets': {
+        # 'web.assets_backend': [
+        #     '/CTDonHang/static/src/css/style.css',
+        #     '/CTDonHang/static/src/css/bootstrap.css',
+        # ],
+        # 'web.assets_frontend': [
+        #     '/CTDonHang/static/src/js/myjs.js',
+        # ]
+    },
 }

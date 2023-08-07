@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_sanpham.user,QuanLyQuanCaPhe User,model_sanpham,qlcf_group_user,1,0,0,0
 access_sanpham.manager,QuanLyQuanCaPhe Manager,model_sanpham,qlcf_group_manager,1,1,1,1
+access_chitietsanpham.user,QuanLyQuanCaPhe User,model_chitietsanpham,qlcf_group_user,1,0,0,0
+access_chitietsanpham.manager,QuanLyQuanCaPhe Manager,model_chitietsanpham,qlcf_group_manager,1,1,1,1

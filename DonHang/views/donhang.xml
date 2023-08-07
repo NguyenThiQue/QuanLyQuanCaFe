@@ -4,26 +4,30 @@
               parent="NguyenLieu.base_menu"
     />
 
+
+    <!-- views/sale_order_views.xml -->
+
+
+
     <record model="ir.ui.view" id="view_donhang">
         <field name="name">Đơn Hàng</field>
         <field name="model">donhang</field>
 
         <field name="arch" type="xml">
-            <tree string="" decoration-success = "state == 'done'"
-                    decoration-info = "state == 'draft'"
-                    decoration-danger = "state == 'cancel'"
-                    decoration-warning = "state == 'confirm'">
-                <field name="id_donhang" optional="show"/>
+            <tree string="" decoration-success="state == 'done'"
+                  decoration-info="state == 'draft'"
+                  decoration-danger="state == 'cancel'"
+                  decoration-warning="state == 'confirm'">
+<!--                <field name="id_donhang" optional="show"/>-->
                 <field name="id_khachhang" optional="show"/>
                 <field name="id_nv" optional="show"/>
 
-                <!--                <field name="product_list" optional = "show"/>-->
                 <field name="tongdh" optional="show"/>
                 <field name="state" optional="show" widget="badge"
-                    decoration-success = "state == 'done'"
-                    decoration-info = "state == 'draft'"
-                    decoration-danger = "state == 'cancel'"
-                    decoration-warning = "state == 'confirm'"
+                       decoration-success="state == 'done'"
+                       decoration-info="state == 'draft'"
+                       decoration-danger="state == 'cancel'"
+                       decoration-warning="state == 'confirm'"
                 />
 
             </tree>
@@ -36,18 +40,22 @@
         <field name="arch" type="xml">
             <form string="Idea form">
                 <header>
-                    <button id = "button_confirm" name = "action_confirm" type = "object" string = "Confirm" class = "btn-primary" states = "draft"/>
-                    <button id = "button_done" name = "action_done" type = "object" string = "Done" class = "btn-primary" states = "confirm"
-                            />
-                    <button id="button_draft" name = "action_draft" type = "object" string = "Set to draft" class = "btn-primary" states = "cancel"/>
-                    <button id="button_cancel" name = "action_cancel" type = "object" string = "Cancel" states = "draft,done,confirm"/>
-                    <field name="state" widget = "statusbar" status_visible = "draft,confirm,done"/>
+                    <button id="button_confirm" name="action_confirm" type="object" string="Confirm" class="btn-primary"
+                            states="draft"/>
+                    <button id="button_done" name="action_done" type="object" string="Done" class="btn-primary"
+                            states="confirm"
+                    />
+                    <button id="button_draft" name="action_draft" type="object" string="Set to draft"
+                            class="btn-primary" states="cancel"/>
+                    <button id="button_cancel" name="action_cancel" type="object" string="Cancel"
+                            states="draft,done,confirm"/>
+                    <field name="state" widget="statusbar" status_visible="draft,confirm,done"/>
                 </header>
                 <sheet>
                     <group>
 
                         <group>
-                            <field name="id_donhang"></field>
+<!--                            <field name="id_donhang"></field>-->
                             <field name="id_khachhang"></field>
                         </group>
 
@@ -69,10 +77,10 @@
                         <field name="tongdh"></field>
                         <field name="ngaytaodh"/>
                     </group>
-<!--                    <group>-->
-<!--                        <field name="state"></field>-->
+                    <!--                    <group>-->
+                    <!--                        <field name="state"></field>-->
 
-<!--                    </group>-->
+                    <!--                    </group>-->
                 </sheet>
 
             </form>

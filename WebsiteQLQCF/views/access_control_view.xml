@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <!-- Giao diện cài đặt phân quyền truy cập -->
+        <record id="view_access_control_form" model="ir.ui.view">
+            <field name="name">access.control.form</field>
+            <field name="model">access.control</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="model_id"/>
+                            <field name="read_access"/>
+                            <field name="write_access"/>
+                            <field name="create_access"/>
+                            <field name="delete_access"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

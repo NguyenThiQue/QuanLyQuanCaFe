@@ -10,7 +10,7 @@
 
         <field name="arch" type="xml">
             <tree string="">
-                <field name="sanpham_id" optional = "show" />
+                <field name="nguyenlieu_id" optional = "show" />
                 <field name="soluongthucte" optional = "show"/>
                 <field name="soluong" optional = "show"/>
                 <field name="ngay_nhap" optional = "show"/>
@@ -29,7 +29,7 @@
                     <group>
 
                         <group>
-                            <field name = "sanpham_id"></field>
+                            <field name = "nguyenlieu_id"></field>
                             <field name = "ngay_nhap"></field>
 
                         </group>
@@ -41,7 +41,7 @@
                         </group>
 
                          <group>
-                            <field name="loaisp" />
+                            <field name="loainguyenlieu" />
                             <field name="giasp"/>
 
                         </group>

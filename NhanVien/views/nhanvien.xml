@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <menuitem id = "nhanvienid" name = "Nhân viên" sequence = '2'
-        parent="NguyenLieu.base_menu"
+    <menuitem id="nhanvienid" name="Nhân viên" sequence='2'
+              parent="NguyenLieu.base_menu"
     />
 
     <record model="ir.ui.view" id="view_nhanvien">
@@ -10,44 +10,49 @@
 
         <field name="arch" type="xml">
             <tree string="">
-                <field name="id_nhanvien" optional = "show" />
-                <field name="name" optional = "show"/>
-                <field name="address" optional = "show"/>
-                <field name="male" optional = "show"/>
-                <field name="date_birthday" optional = "show"/>
-                <field name="phone" optional = "show"/>
+                <!--                <field name="id_nhanvien" optional = "show" />-->
+                <field name="name" optional="show"/>
+                <field name="address" optional="show"/>
+                <field name="male" optional="show"/>
+                <field name="date_birthday" optional="show"/>
+                <field name="phone" optional="show"/>
             </tree>
         </field>
     </record>
     <record model="ir.ui.view" id="name_view_form">
         <field name="name">Nhân viên</field>
         <field name="model">nhanvien</field>
-<!--        <field name="inherit_id" ref="web.login"/>-->
+        <!--        <field name="inherit_id" ref="web.login"/>-->
 
         <field name="arch" type="xml">
             <form string="Idea form">
-               <sheet>
+                <sheet>
                     <group>
 
-                        <group>
-                            <field name = "id_nhanvien"></field>
-                            <field name = "name"></field>
-
-
-                        </group>
 
                         <group>
-                            <field name = "address"></field>
-                            <field name = "male"></field>
+                            <field name="name"></field>
+                            <field name="username"/>
+                        </group>
+                        <group>
+                            <field name="password"/>
+                            <field name="address"></field>
+                        </group>
+                        <group>
+                            <field name="male"></field>
+                            <field name="date_birthday"></field>
+                        </group>
+                        <group>
+                            <field name="phone"></field>
+                            <field name="user_id"
+                                   options="{'no_create': True, 'no_quick_create': True}"/> <!-- Thêm trường user_id vào form -->
+
                         </group>
 
-                         <group>
-                            <field name = "date_birthday"></field>
-                            <field name = "phone"></field>
-                        </group>
 
                     </group>
                 </sheet>
+
 
             </form>
         </field>
@@ -59,5 +64,5 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id = "menu_qlqcf" name = "Nhân Viên " parent = "nhanvienid" action = "action_nhanvien"/>
+    <menuitem id="menu_qlqcf" name="Nhân Viên " parent="nhanvienid" action="action_nhanvien"/>
 </odoo>

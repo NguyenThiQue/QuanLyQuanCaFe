@@ -20,7 +20,7 @@
     'version': '16.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web'],
+    'depends': ['base', 'website','SanPham'],
 
     # always loaded
     'data': [
