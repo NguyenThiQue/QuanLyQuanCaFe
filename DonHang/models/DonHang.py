@@ -57,14 +57,27 @@ class DonHang(models.Model):
         result.update_thongke()
         return result
 
+    # @api.depends('tongdh', 'ngaytaodh')
+    # def update_thongke(self):
+    #     month = self.ngaytaodh.strftime("%m")
+    #     year = self.ngaytaodh.strftime("%Y")
+    #     thongke = self.env['thongke'].search([('month', '=', month), ('year', '=', year)], limit=1)
+    #     thongke.revenue = thongke.calculate_revenue(month, year)
+    #     thongkesl = self.env['thongkesldh'].search([('month', '=', month), ('year', '=', year)], limit=1)
+    #     thongkesl.sldh = thongkesl.compute_sale_order(month, year)
+
     @api.depends('tongdh', 'ngaytaodh')
     def update_thongke(self):
-        month = self.ngaytaodh.strftime("%m")
-        year = self.ngaytaodh.strftime("%Y")
-        thongke = self.env['thongke'].search([('month', '=', month), ('year', '=', year)], limit=1)
-        thongke.revenue = thongke.calculate_revenue(month, year)
-        thongkesl = self.env['thongkesldh'].search([('month', '=', month), ('year', '=', year)], limit=1)
-        thongkesl.sldh = thongkesl.compute_sale_order(month, year)
+        for record in self:
+            if record.ngaytaodh:
+                month = record.ngaytaodh.strftime("%m")
+                year = record.ngaytaodh.strftime("%Y")
+                thongke = self.env['thongke'].search([('month', '=', month), ('year', '=', year)], limit=1)
+                if thongke:
+                    thongke.revenue = thongke.calculate_revenue(month, year)
+                thongkesl = self.env['thongkesldh'].search([('month', '=', month), ('year', '=', year)], limit=1)
+                if thongkesl:
+                    thongkesl.sldh = thongkesl.compute_sale_order(month, year)
 
     #========================================================== Xác nhận số lượng sản phẩm và trừ đí
 
@@ -97,9 +110,6 @@ class KhachHang(models.Model):
 
 
 
-class CTDONHANG(models.Model):
-    _inherit = "ctdonhang"
-    donhang_id = fields.Many2one('donhang', string='Đơn hàng')
-    from odoo.exceptions import ValidationError
+
 
 

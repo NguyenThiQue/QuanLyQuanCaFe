@@ -159,3 +159,26 @@ function getCartDataFromCartPage() {
             alert("Vui lòng nhập đầy đủ thông tin đăng nhập!");
         }
     }
+
+
+
+function clearCartAndRedirect() {
+    $.ajax({
+        type: 'POST',
+        url: '/gio_hang/confirm_order',  // Đổi đường dẫn thành URL xử lý khi ấn nút "Thanh toán"
+        data: {},
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                window.location.href = '/path_to_success_page';  // Đổi '/path_to_success_page' thành đường dẫn thực tế của trang thành công
+            } else {
+                // Xử lý lỗi nếu cần
+            }
+        },
+        error: function(xhr, status, error) {
+            // Xử lý lỗi nếu cần
+        }
+    });
+}
+
+

@@ -63,3 +63,10 @@ class LoginController(http.Controller):
 
         return redirect('/web')
 
+
+    @http.route('/web/logout', type='http', auth="user")
+    def logout(self, redirect='/web'):
+        # Your custom logout logic here
+        # For example, you can clear session data or perform additional actions
+        return super(LoginController, self).logout(redirect=redirect)
+

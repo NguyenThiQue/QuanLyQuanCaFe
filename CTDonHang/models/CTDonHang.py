@@ -51,34 +51,34 @@ class CTDonHang(models.Model):
     #
     #     return True
 
-    @classmethod
-    def create_order_from_cart(cls, cart_data):
-        try:
-            # Tạo đơn hàng mới
-            order = request.env['donhang'].create({})
-
-            # Lấy danh sách sản phẩm và số lượng từ giỏ hàng
-            products = cart_data.get('products', [])
-
-            # Tạo các sản phẩm trong đơn hàng
-            for product_data in products:
-                product_item_id = product_data.get('product_item_id')
-                quantity = product_data.get('quantity')
-
-                # Kiểm tra nếu sản phẩm tồn tại
-                product = request.env['ctdonhang'].browse(int(product_item_id))
-                if product:
-                    product.create({
-                        'name': product.name,
-                        'quantity': int(quantity),
-                        'donhang_id': order.id,
-                    })
-
-            return {'success': True, 'order_id': order.id}
-        except ValidationError as e:
-            return {'error': str(e)}
-        except Exception as ex:
-            return {'error': str(ex)}
+    # @classmethod
+    # def create_order_from_cart(cls, cart_data):
+    #     try:
+    #         # Tạo đơn hàng mới
+    #         order = request.env['donhang'].create({})
+    #
+    #         # Lấy danh sách sản phẩm và số lượng từ giỏ hàng
+    #         products = cart_data.get('products', [])
+    #
+    #         # Tạo các sản phẩm trong đơn hàng
+    #         for product_data in products:
+    #             product_item_id = product_data.get('product_item_id')
+    #             quantity = product_data.get('quantity')
+    #
+    #             # Kiểm tra nếu sản phẩm tồn tại
+    #             product = request.env['ctdonhang'].browse(int(product_item_id))
+    #             if product:
+    #                 product.create({
+    #                     'name': product.name,
+    #                     'quantity': int(quantity),
+    #                     'donhang_id': order.id,
+    #                 })
+    #
+    #         return {'success': True, 'order_id': order.id}
+    #     except ValidationError as e:
+    #         return {'error': str(e)}
+    #     except Exception as ex:
+    #         return {'error': str(ex)}
 
     @api.depends('product_item_id')
     def _compute_price(self):

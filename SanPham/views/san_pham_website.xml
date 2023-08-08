@@ -69,20 +69,14 @@
                     </div>
                     <xpath expr="//div[@id='wrapwrap']" position="inside">
                         <div id="website_sale">
-                            <!--                             <button type="button" class="btn btn-success"-->
-                            <!--                                t-att-data-product-detail="json.dumps(product_detail)"-->
-                            <!--                                onclick="addToCart(json.parse(this.dataset.productDetail))">Add to Cart-->
-                            <!--                        </button>-->
 
-                            <!--                             <button type="button" class="btn btn-success"-->
-                            <!--                                t-att-data-product-id="product_detail.id"-->
-                            <!--                                onclick="addToCart(this.dataset.productId, 1)">Add to Cart-->
-                            <!--                        </button>-->
                             <button type="button" class="btn btn-success"
                                     t-att-data-product-id="product_detail.id"
                                     t-att-data-quantity="1"
                                     onclick="addToCart(this.dataset.productId, this.dataset.quantity)">Add to Cart
                             </button>
+
+
 
 
                         </div>

@@ -19,7 +19,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <t t-set="default_product_item_id" t-value="0"/>
                                 <tr t-foreach="shopping_cart" t-as="item">
+                                     <t t-set="default_product_item_id" t-value="item.product_item_id.id"/>
                                     <td>
                                         <t t-esc="item.product_item_id.name"/>
                                     </td>
@@ -61,11 +63,26 @@
                                 </tr>
                             </tbody>
                         </table>
-<!--                        <a t-if="shopping_cart" class="btn btn-primary" href="/api/get_cart" style="float: right;">Thanh-->
+<!--                        <a t-if="shopping_cart" class="btn btn-primary" href="/gio_hang/confirm_order" style="float: right;">Thanh-->
 <!--                            toán-->
 <!--                        </a>-->
-                        <a t-if="shopping_cart" class="btn btn-primary" style="float: right;">  <button id="btnCreateOrder">Thanh Toán</button>
-                        </a>
+                       <a t-if="shopping_cart and order_state == 'done'" class="btn btn-primary" style="float: right;"
+   t-attf-href="javascript:void(0);" t-attf-onclick="clearCartAndRedirect()">
+    Thanh toán
+</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <p t-if="not shopping_cart">Giỏ hàng trống</p>
                     </div>
                 </div>

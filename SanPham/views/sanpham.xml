@@ -8,7 +8,8 @@
         <field name="model">sanpham</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name"/>
+                <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                <field name="id_catesp" string="Loại sản phẩm" filter_domain="[('id_catesp', '=', self)]"/>
             </search>
         </field>
     </record>
@@ -154,6 +155,7 @@
         <field name="name">Sản Phẩm</field>
         <field name="res_model">sanpham</field>
         <field name="view_mode">tree,form,kanban</field>
+         <field name="search_view_id" ref="SanPham.view_sanpham_search"/>
     </record>
 
     <menuitem id="menu_qlqcf" name="Sản Phẩm" parent="sanpham" action="action_sp"/>
