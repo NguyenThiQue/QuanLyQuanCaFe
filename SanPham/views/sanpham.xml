@@ -26,7 +26,11 @@
                 <field name="price" optional="show"/>
                 <field name="id_catesp" optional="show"/>
 <!--                <field name="id_nhanviencsp" optional="show"/>-->
+<<<<<<< HEAD
 <!--                <field name="quantity" optional="show"/>-->
+=======
+                <field name="quantity" optional="show"/>
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
                 <!--                <field name="img_sp" optional="show"/>-->
             </tree>
 
@@ -104,8 +108,13 @@
                             <field name="id_catesp"/>
                         </group>
                         <group>
+<<<<<<< HEAD
 <!--                            <field name="id_nhanviencsp"/>-->
 <!--                <field name="quantity"/>-->
+=======
+                            <field name="id_nhanviencsp"/>
+                <field name="quantity"/>
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
 
 <!--                            <field name="kho_id"/>-->
                         </group>

@@ -58,8 +58,11 @@ table>tbody>tr{
 .login-template {
     display: flex;
     justify-content: center;
+<<<<<<< HEAD
 }
 
 a  {
     text-decoration: none;
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
 }

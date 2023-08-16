@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8" ?>
 
 <odoo>
     <template id="login_template">
 
+=======
+<!-- nhanvien/views/login_view.xml -->
+<odoo>
+    <!-- Define the login_template -->
+    <template id="login_template">
+        <!-- Extend the web.layout template with the login form -->
+        <!-- Add your custom login form content here -->
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
         <t t-call="website.layout">
             <div class="oe_website_login_container">
                 <form t-attf-action="/nhanvien/login" method="post" class="oe_login_form">
@@ -19,9 +28,12 @@
                         <button type="submit" class="btn btn-primary btn_cta">Đăng nhập</button>
 
                     </div>
+<<<<<<< HEAD
                     <t t-if="error">
                         <p class="text-danger">Thông tin đăng nhập không chính xác. Vui lòng thử lại.</p>
                     </t>
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
                 </form>
             </div>
         </t>

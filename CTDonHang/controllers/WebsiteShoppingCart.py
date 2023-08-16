@@ -91,11 +91,16 @@ class ShoppingCartController(http.Controller):
     @http.route('/add_to_cart', type='http', auth='public', website=True, csrf=False)
     def add_to_cart(self, **post):
         product_item_id = post.get('product_item_id')
+<<<<<<< HEAD
         print("SP", product_item_id)
         quantity = post.get('quantity')
         print("quantitity", quantity)
         user = request.env.user
         print("User", user)
+=======
+        quantity = post.get('quantity')
+        user = request.env.user
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
 
         if not product_item_id or not quantity:
             return json.dumps({'error': 'Missing product_id or quantity'})
@@ -112,12 +117,18 @@ class ShoppingCartController(http.Controller):
         if user and user.id:  # Kiểm tra người dùng đăng nhập
             nhanvien_model = request.env['nhanvien']
             nhanvien = nhanvien_model.sudo().search([('user_id', '=', user.id)], limit=1)
+<<<<<<< HEAD
             print("Nhan vien", nhanvien)
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
 
             if nhanvien:  # Nếu người dùng là nhân viên
                 order = request.env['donhang'].sudo().search([('id_nv', '=', nhanvien.id), ('state', '=', 'draft')],
                                                              limit=1)
+<<<<<<< HEAD
                 print("order", order)
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
                 if not order:
                     order = request.env['donhang'].sudo().create(
                         {'id_nv': nhanvien.id, 'ngaytaodh': fields.Date.today()})
@@ -139,7 +150,10 @@ class ShoppingCartController(http.Controller):
         else:
             return json.dumps({'error': 'User not logged in'})
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
     #
     # @http.route('/shop/cart', type='http', auth='public', website=True)
     # def shopping_cart_page(self, **kw):
@@ -155,11 +169,19 @@ class ShoppingCartController(http.Controller):
     def shopping_cart_page(self, **kw):
         user = http.request.env.user
 
+<<<<<<< HEAD
         if user and user.id:
             cart_items = http.request.env['ctdonhang'].sudo().search([
                 ('hoadon_id.state', '=', 'draft'),  # Chỉ lấy các chi tiết đơn hàng ở trạng thái draft
                 # ('id_nhanvien', '=', user.id)
                 # ('id_nhanvien', '=', user.id)
+=======
+        # Fetch cart data based on user's logged in status
+        if user and user.id:
+            cart_items = http.request.env['ctdonhang'].sudo().search([
+                ('hoadon_id.state', '=', 'draft'),  # Chỉ lấy các chi tiết đơn hàng ở trạng thái draft
+                ('id_nhanvien', '=', user.id)
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
             ])
             order_state = 'draft'  # Đang ở trạng thái draft cho đơn hàng mới
         else:

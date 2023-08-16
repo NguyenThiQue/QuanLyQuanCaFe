@@ -182,6 +182,7 @@ function clearCartAndRedirect() {
 }
 
 
+<<<<<<< HEAD
 document.getElementById("clearCartButton").addEventListener("click", function() {
     clearCartOnOrderConfirm();  // Gọi hàm khi nút bấm được bấm
 });
@@ -208,3 +209,5 @@ function clearCartOnOrderConfirm() {
         }
     });
 }
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598

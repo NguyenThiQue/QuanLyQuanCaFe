@@ -50,7 +50,10 @@
                         <group>
                             <field name="quantity"/>
                             <field name="id_nhanvien"/>
+<<<<<<< HEAD
 <!--                            <field name="nhanvien_name"/>-->
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
                         </group>
 
                         <group>

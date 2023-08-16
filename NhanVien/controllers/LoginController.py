@@ -49,6 +49,7 @@ class LoginController(http.Controller):
         username = kw.get('username')
         password = kw.get('password')
 
+<<<<<<< HEAD
         nhanvien = http.request.env['nhanvien'].sudo().search([('username', '=', username)], limit=1)
 
         if not nhanvien or not nhanvien.password == password:
@@ -58,12 +59,30 @@ class LoginController(http.Controller):
             request.session.authenticate(http.request.session.db, nhanvien.user_id.login, password)
         except AccessDenied:
             return http.request.render('NhanVien.login_template', {'error': ' Bạn không có quyền truy cập'})
+=======
+        # Find the nhanvien record with the given username
+        nhanvien = http.request.env['nhanvien'].sudo().search([('username', '=', username)], limit=1)
+
+        if not nhanvien or not nhanvien.password == password:
+            return http.request.render('NhanVien.login_template', {'error': 'Invalid credentials'})
+
+        # Authenticate the user using the nhanvien's user_id
+        try:
+            request.session.authenticate(http.request.session.db, nhanvien.user_id.login, password)
+        except AccessDenied:
+            return http.request.render('NhanVien.login_template', {'error': 'Access Denied'})
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
 
         return redirect('/web')
 
 
     @http.route('/web/logout', type='http', auth="user")
     def logout(self, redirect='/web'):
+<<<<<<< HEAD
 
+=======
+        # Your custom logout logic here
+        # For example, you can clear session data or perform additional actions
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
         return super(LoginController, self).logout(redirect=redirect)
 

@@ -1,0 +1,16 @@
+<!-- File: views/res_users_view.xml -->
+<odoo>
+    <data>
+        <!-- Form view for ResUsers model -->
+        <record model="ir.ui.view" id="view_res_users_form_inherit">
+            <field name="name">res.users.form.inherit</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <field name="login" position="after">
+                    <field name="employee_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

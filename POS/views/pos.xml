@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id = "posid" name = "POS" sequence = '2'
+        parent="NguyenLieu.base_menu"
+    />
+
+    <record model="ir.ui.view" id="view_pos">
+        <field name="name">POS</field>
+        <field name="model">pos</field>
+
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" optional = "show" />
+                
+
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="name_view_form_pos">
+        <field name="name">POS</field>
+        <field name="model">pos</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+               <sheet>
+                    <group>
+
+                        <field name="name"/>
+
+
+
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_pos" model="ir.actions.act_window">
+        <field name="name">POS</field>
+        <field name="res_model">pos</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id = "menu_qlqcf" name = "POS " parent = "posid" action = "action_pos"/>
+</odoo>

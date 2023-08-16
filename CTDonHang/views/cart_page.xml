@@ -84,7 +84,10 @@
 
 
                         <p t-if="not shopping_cart">Giỏ hàng trống</p>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
                     </div>
                 </div>
             </div>

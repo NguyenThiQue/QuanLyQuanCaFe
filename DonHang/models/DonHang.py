@@ -1,6 +1,8 @@
 import self as self
 
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError, UserError
+
 
 
 class DonHang(models.Model):
@@ -9,12 +11,22 @@ class DonHang(models.Model):
     _table = "DonHang"
     _description = ''
     name = fields.Char(string="Đơn hàng")
+<<<<<<< HEAD
     tongdh = fields.Float(compute='_compute_price_total',string="Tổng đơn hàng")
     # id_nv = fields.Many2one("nhanvien", string="Mã nhân viên")
     id_nv = fields.Many2one("nhanvien", string="Mã nhân viên", compute = "_compute_name_nhanvien")
 
 
     ct_donhang = fields.One2many("ctdonhang", "hoadon_id", string="Chi tiết đơn hàng")
+=======
+    # id_donhang = fields.Char(string="Mã đơn hàng")
+    tongdh = fields.Float(compute='_compute_price_total',string="Tổng đơn hàng")
+    id_nv = fields.Many2one("nhanvien", string="Mã nhân viên")
+
+
+    ct_donhang = fields.One2many("ctdonhang", "hoadon_id", string="Chi tiết đơn hàng")
+    # id_khachhang = fields.Many2one("khachhang", string="Khách hàng", required = True)
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
     id_khachhang = fields.Many2one("khachhang", string="Khách hàng")
     ngaytaodh = fields.Date(string="Ngày tạo đơn hàng")
 
@@ -23,6 +35,7 @@ class DonHang(models.Model):
                               ], default='draft', string='Status')
 
 
+<<<<<<< HEAD
 
 
     @api.depends('ct_donhang')
@@ -33,6 +46,8 @@ class DonHang(models.Model):
                 record.id_nv = nhanvien_ids[0]
             else:
                 record.id_nv = False  # Set to False or another appropriate value when there's ambiguity
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
 
     def action_confirm(self):
         self.state = 'confirm'
@@ -64,7 +79,18 @@ class DonHang(models.Model):
         result.update_thongke()
         return result
 
+<<<<<<< HEAD
 
+=======
+    # @api.depends('tongdh', 'ngaytaodh')
+    # def update_thongke(self):
+    #     month = self.ngaytaodh.strftime("%m")
+    #     year = self.ngaytaodh.strftime("%Y")
+    #     thongke = self.env['thongke'].search([('month', '=', month), ('year', '=', year)], limit=1)
+    #     thongke.revenue = thongke.calculate_revenue(month, year)
+    #     thongkesl = self.env['thongkesldh'].search([('month', '=', month), ('year', '=', year)], limit=1)
+    #     thongkesl.sldh = thongkesl.compute_sale_order(month, year)
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
 
     @api.depends('tongdh', 'ngaytaodh')
     def update_thongke(self):
@@ -79,6 +105,7 @@ class DonHang(models.Model):
                 if thongkesl:
                     thongkesl.sldh = thongkesl.compute_sale_order(month, year)
 
+<<<<<<< HEAD
 
     def action_confirm(self):
         for line in self.ct_donhang:
@@ -101,6 +128,21 @@ class DonHang(models.Model):
                         phieunhapkho.soluong = 0
                         raise models.ValidationError('Không đủ nguyên liệu để tạo sản phẩm ' + line.product_item_id.name)
 
+=======
+    #========================================================== Xác nhận số lượng sản phẩm và trừ đí
+
+    @api.onchange('ct_donhang')
+    def onchange_order_line(self):
+        for line in self.ct_donhang:
+            if line.quantity > line.product_item_id.quantity:
+                raise models.ValidationError('Không đủ số lượng sản phẩm!')
+
+    def action_confirm(self):
+        for line in self.ct_donhang:
+            if line.quantity > line.product_item_id.quantity:
+                raise models.ValidationError('Không đủ số lượng sản phẩm!')
+            line.product_item_id.quantity -= line.quantity
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
         self.state = 'done'
 
 
@@ -122,6 +164,9 @@ class KhachHang(models.Model):
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598

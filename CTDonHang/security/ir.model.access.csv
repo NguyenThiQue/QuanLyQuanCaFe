@@ -1,3 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+<<<<<<< HEAD
 access_ctdonhang.user,QuanLyQuanCaPhe User,model_ctdonhang,qlcf_group_user,1,0,1,0
+=======
+access_ctdonhang.user,QuanLyQuanCaPhe User,model_ctdonhang,qlcf_group_user,1,1,1,0
+>>>>>>> a955c00701b649db70a93d96737b4ca121d43598
 access_ctdonhang.manager,QuanLyQuanCaPhe Manager,model_ctdonhang,qlcf_group_manager,1,1,1,1

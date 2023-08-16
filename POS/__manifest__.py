@@ -16,23 +16,19 @@
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/16.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
-    'category': 'Services/LoaiNguyenLieu',
+    'category': 'Services/POS',
     'version': '16.0.0.1',
 
     # any module necessary for this one to work correctly
-<<<<<<<< HEAD:LoaiNguyenLieu/__manifest__.py
     'depends': ['base'],
-========
-    'depends': ['base', 'website','SanPham'],
->>>>>>>> a955c00701b649db70a93d96737b4ca121d43598:WebsiteQLQCF/__manifest__.py
 
     # always loaded
     'data': [
 
-        'security/loainguyenlieu_security.xml',
+        'security/pos_security.xml',
         'security/ir.model.access.csv',
 
-        "views/loainguyenlieu.xml",
+        "views/pos.xml",
 
     ],
     'sequence':1,
