@@ -53,3 +53,13 @@ table>tbody>tr{
   color: white;
   background-color: green;
 }
+
+
+.login-template {
+    display: flex;
+    justify-content: center;
+}
+
+a  {
+    text-decoration: none;
+}

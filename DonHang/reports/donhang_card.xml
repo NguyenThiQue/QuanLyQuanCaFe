@@ -17,7 +17,6 @@
                 <t t-call="web.internal_layout">
                     <div class="page">
 
-                        ID đơn hàng :<span t-field = "doc.id_donhang"/><br></br>
                         ID nhân viên:        <span t-field= "doc.id_nv"/><br></br>
                              ID khách hàng:   <span t-field = "doc.id_khachhang"/><br></br>
                         <br></br>

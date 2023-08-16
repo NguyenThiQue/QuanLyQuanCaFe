@@ -11,9 +11,9 @@
         <field name="arch" type="xml">
             <tree string="">
                 <field name="name" optional="show"/>
-                <field name="soluong" optional="show"/>
+<!--                <field name="soluong" optional="show"/>-->
                 <field name="diachi" optional="show"/>
-                <field name="category" optional="show"/>
+<!--                <field name="category" optional="show"/>-->
                 <field name="donvi" optional="show"/>
             </tree>
         </field>
@@ -29,16 +29,21 @@
 
                         <group>
                             <field name="name"></field>
-                            <field name="soluong" />
+<!--                            <field name="soluong" />-->
                         </group>
-                        <group><field name="soluongthucte"/> </group>
+<!--                        <group><field name="soluongthucte"/> </group>-->
                         <group>
                             <field name="diachi" />
-                            <field name="category"/>
+<!--                            <field name="category"/>-->
                         </group>
                         <group><field name="donvi"/> </group>
 
                     </group>
+<!--                    <notebook>-->
+<!--                        <page string = "Sản phẩm" name = "Sản phẩm">-->
+<!--                            <field name="phieunhapkho_ids"/>-->
+<!--                        </page>-->
+<!--                    </notebook>-->
 
                 </sheet>
 
@@ -51,5 +56,5 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <menuitem id="menu_qlqcf" name="Kho " parent="khomenu" action="action_kho"/>
+    <menuitem id="menu_qlqcfkho" name="Kho " parent="khomenu" action="action_kho"/>
 </odoo>

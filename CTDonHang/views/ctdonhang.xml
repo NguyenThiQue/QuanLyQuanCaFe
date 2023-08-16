@@ -10,12 +10,13 @@
 
         <field name="arch" type="xml">
             <tree string="">
-<!--                <field name="id_ctdonhang" optional="show"/>-->
+                <!--                <field name="id_ctdonhang" optional="show"/>-->
                 <field name="product_item_id" optional="show"/>
-<!--                <field name="id_masp" optional="show"/>-->
+                <!--                <field name="id_masp" optional="show"/>-->
                 <field name="gia" optional="show"/>
                 <field name="quantity" optional="show"/>
                 <field name="tonggiasp" optional="show"/>
+                <!--                <field name="kho_idd" optional="show"/>-->
 
             </tree>
         </field>
@@ -29,14 +30,31 @@
                 <sheet>
                     <group>
 
+                        <!--                        <group>-->
+                        <!--                            <field name="id_ctdonhang"></field>-->
+                        <!--&lt;!&ndash;                            <field name="id_donhang"></field>&ndash;&gt;-->
+                        <!--                        </group>-->
+
                         <group>
-                            <field name="id_ctdonhang"></field>
-<!--                            <field name="id_donhang"></field>-->
+                            <!--                            <field name="id_masp"></field>-->
+                            <field name="product_item_id">
+                                <tree>
+                                    <field name="name"/>
+                                    <!--                                    <field name="price"/>-->
+                                </tree>
+                            </field>
+                            <field name="gia"></field>
+                            <!--                            <field name="kho_idd"></field>-->
+
+                        </group>
+                        <group>
+                            <field name="quantity"/>
+                            <field name="id_nhanvien"/>
+<!--                            <field name="nhanvien_name"/>-->
                         </group>
 
                         <group>
-<!--                            <field name="id_masp"></field>-->
-                            <field name="gia"></field>
+                            <field name="tonggiasp"></field>
 
                         </group>
 
@@ -48,38 +66,28 @@
 
 
                     </group>
-                    <group>-->
+                    <!--                    <group>&ndash;&gt;-->
 
-<!--                        <field name="product_list">-->
-<!--                            <tree editable="bottom">-->
-<!--                                <field name="name"/>-->
-<!--                                <field name="price"/>-->
-<!--                                <field name="quantity"/>-->
-<!--                                &lt;!&ndash;                                     <field name="soluong"></field>&ndash;&gt;-->
-<!--                            </tree>-->
-<!--                        </field>-->
-                        <field name="product_item_id">
-                            <tree>
-                                <field name="name"/>-->
-                                <field name="price"/>
-                            </tree>
-                        </field>
+                    <!--&lt;!&ndash;                        <field name="product_list">&ndash;&gt;-->
+                    <!--&lt;!&ndash;                            <tree editable="bottom">&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                <field name="name"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                <field name="price"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                <field name="quantity"/>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                                &lt;!&ndash;                                     <field name="soluong"></field>&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;                            </tree>&ndash;&gt;-->
+                    <!--&lt;!&ndash;                        </field>&ndash;&gt;-->
+                    <!--                        -->
 
-                    </group>
-                    <group>
-                        <field name="quantity"/>
-                    </group>
+                    <!--                    </group>-->
 
-                    <group>
-                        <field name="tonggiasp"></field>
-
-                    </group>
 
                 </sheet>
 
             </form>
         </field>
     </record>
+
+
     <record id="action_ctdonhang" model="ir.actions.act_window">
         <field name="name">Chi Tiết Đơn Hàng</field>
         <field name="res_model">ctdonhang</field>

@@ -20,7 +20,7 @@
     'version': '16.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'NhanVien', 'SanPham', 'CTDonHang', 'KhachHang', 'Kho'],
+    'depends': ['base', 'NhanVien', 'SanPham', 'CTDonHang', 'KhachHang', 'Kho', 'PhieuNhapKho'],
 
     # always loaded
     'data': [

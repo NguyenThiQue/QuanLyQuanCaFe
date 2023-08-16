@@ -1,0 +1,13 @@
+<!--<odoo>-->
+<!--    <data>-->
+<!--        &lt;!&ndash; Register the custom controller &ndash;&gt;-->
+<!--        <record id="website_shopping_cart_controller" model="ir.http">-->
+<!--            <field name="name">Shopping Cart Controller</field>-->
+<!--            <field name="type">controller</field>-->
+<!--            <field name="auth">public</field>-->
+<!--            <field name="website_id" eval="True"/>-->
+<!--            <field name="route">/add_to_cart</field>-->
+<!--            <field name="controller_id" ref="CTDonHang.WebsiteShoppingCart"/>-->
+<!--        </record>-->
+<!--    </data>-->
+<!--</odoo>-->

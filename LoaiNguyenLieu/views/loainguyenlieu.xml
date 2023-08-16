@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id="loainguyenlieumenu" name="Loại nguyên liệu" sequence='2'
+              parent="NCCNguyenLieu.ncc_menu"
+    />
+
+    <record model="ir.ui.view" id="view_kho">
+        <field name="name">Loại nguyên liệu</field>
+        <field name="model">loainguyenlieu</field>
+
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="name" optional="show"/>
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="name_view_form">
+        <field name="name">Loại nguyên liệu</field>
+        <field name="model">loainguyenlieu</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+                <sheet>
+
+                        <group>
+                            <field name="name"></field>
+                        </group>
+
+
+
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <record id="action_loainguyenlieu" model="ir.actions.act_window">
+        <field name="name">Loại nguyên liệu</field>
+        <field name="res_model">loainguyenlieu</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_loainguyenlieu" name="Loại nguyên liệu " parent="loainguyenlieumenu" action="action_loainguyenlieu"/>
+</odoo>

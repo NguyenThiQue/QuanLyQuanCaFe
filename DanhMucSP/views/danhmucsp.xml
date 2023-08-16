@@ -10,7 +10,7 @@
 
         <field name="arch" type="xml">
             <tree string="">
-                <field name="id_category" optional = "show"/>
+<!--                <field name="id_category" optional = "show"/>-->
                 <field name="name" optional = "show"/>
             </tree>
         </field>
@@ -24,12 +24,13 @@
                <sheet>
                     <group>
 
-                        <group>
-                            <field name = "id_category"></field>
-                        </group>
+<!--                        <group>-->
+<!--                            <field name = "id_category"></field>-->
+<!--                        </group>-->
 
                         <group>
                             <field name = "name"></field>
+<!--                            <field name = "id_kho"></field>-->
                         </group>
 
                     </group>

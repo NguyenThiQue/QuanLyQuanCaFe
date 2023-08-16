@@ -9,21 +9,18 @@
         <field name="arch" type="xml">
             <tree string="Danh sách nguyên liệu">
 
-                <field name="nguyenlieu_ma" optional = "show"/>
+<!--                <field name="nguyenlieu_ma" optional = "show"/>-->
                 <field name="ma_ncc" optional = "show"/>
                 <field name="name" optional = "show"/>
-<!--                <field name="sp_dv_id" widget="many2many_kanban"/>-->
                 <field name="nguyenlieu_dv_id" optional = "show"/>
 
-                <field name="nguyenlieu_gianhap" optional = "show"/>
-                <field name="nguyenlieu_giaxuat" optional = "show"/>
-                <field name="nguyenlieu_giaxuat1" optional = "show"/>
-                <field name="nguyenlieu_giaxuat2" optional = "show"/>
-                 <field name="nguyenlieu_tondinhmuc" optional = "show"/>
-                <field name="nguyenlieu_tonthucte" optional = "show"/>
-                <field name="nguyenlieu_hinhanh" optional = "show"/>
-<!--                <field name="sp_store_fname" invisible = '1'/>-->
-<!--                <field name="sp_hinhanh" filename = 'store_fname' widget="attachment_image" class="ot_image"/>-->
+<!--                <field name="nguyenlieu_gianhap" optional = "show"/>-->
+                <field name="price" optional = "show"/>
+<!--                 <field name="nguyenlieu_tondinhmuc" optional = "show"/>-->
+<!--                <field name="nguyenlieu_tonthucte" optional = "show"/>-->
+<!--                <field name="loainguyenlieu" optional = "show"/>-->
+
+<!--                <field name="nguyenlieu_hinhanh" optional = "show"/>-->
 
             </tree>
         </field>
@@ -35,32 +32,32 @@
         <field name="arch" type="xml">
             <form string="Idea form">
                <sheet>
-                    <field name = "nguyenlieu_hinhanh" widget = "nguyenlieu_hinhanh" class = "oe_avatar"></field>
+                    <field name = "nguyenlieu_hinhanh" widget = "image" class = "oe_avatar"></field>
                     <group>
                         <group>
-                            <field name = "nguyenlieu_ma"></field>
+<!--                            <field name = "nguyenlieu_ma"></field>-->
                             <field name = "name"></field>
 
                         </group>
 
                         <group>
                             <field name = "nguyenlieu_dv_id"></field>
-                            <field name = "nguyenlieu_gianhap"></field>
+<!--                            <field name = "nguyenlieu_gianhap"></field>-->
                         </group>
 
                          <group>
-                            <field name = "nguyenlieu_giaxuat"></field>
-                            <field name = "nguyenlieu_giaxuat2"></field>
+                            <field name = "price"></field>
                         </group>
 
                          <group>
-                            <field name = "nguyenlieu_giaxuat1"></field>
-                            <field name = "nguyenlieu_tondinhmuc"></field>
+<!--                            <field name = "nguyenlieu_tondinhmuc"></field>-->
+                            <field name = "id_nhanviencsp"></field>
                         </group>
 
                         <group>
-                            <field name = "nguyenlieu_tonthucte"></field>
+<!--                            <field name = "nguyenlieu_tonthucte"></field>-->
                             <field name = "ma_ncc"></field>
+                            <field name = "loainguyenlieu"></field>
                         </group>
 
 <!--                        <group>-->

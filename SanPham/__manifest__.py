@@ -20,7 +20,7 @@
     'version': '16.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'DanhMucSP', 'NhanVien', 'web', 'Kho'],
+    'depends': ['base', 'DanhMucSP', 'NhanVien', 'web','NguyenLieu', 'website', 'KhachHang'],
 
     # always loaded
     'data': [
@@ -29,7 +29,7 @@
         'security/ir.model.access.csv',
 
         "views/sanpham.xml",
-        # "views/login.xml",
+        "views/san_pham_website.xml",
 
     ],
     'sequence': 1,
@@ -41,9 +41,12 @@
     'assets': {
         'web.assets_backend': [
             '/SanPham/static/src/css/style.css',
+            '/SanPham/static/src/css/bootstrap.css',
         ],
-        # 'web.assets_frontend': [
-        #     '/SanPham/static/src/js/bootstrap.js',
-        # ]
+        'web.assets_frontend': [
+            '/SanPham/static/src/js/bootstrap.js',
+            '/SanPham/static/src/js/myjs.js',
+        ]
     },
+
 }

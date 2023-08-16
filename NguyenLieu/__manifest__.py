@@ -20,12 +20,12 @@
     'version': '16.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base', 'LoaiNguyenLieu', 'NhanVien','NCCNguyenLieu'],
 
     # always loaded
     'data': [
 
-        'security/thongkspbc_security.xml',
+        'security/sanpham_security.xml',
         'security/ir.model.access.csv',
 
         "views/nguyenlieu.xml",

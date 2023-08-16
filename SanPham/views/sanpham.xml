@@ -8,7 +8,8 @@
         <field name="model">sanpham</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name"/>
+                <field name="name" filter_domain="[('name', 'ilike', self)]"/>
+                <field name="id_catesp" string="Loại sản phẩm" filter_domain="[('id_catesp', '=', self)]"/>
             </search>
         </field>
     </record>
@@ -18,14 +19,15 @@
         <field name="model">sanpham</field>
 
         <field name="arch" type="xml">
-            <tree string="" class = "tree_style">
-                <field name="id_sp" optional="show"/>
+            <tree string="" class="tree_style">
+<!--                <field name="id_sp" optional="show"/>-->
                 <field name="name" optional="show"/>
-                <field name="descr" optional="show"/>
+<!--                <field name="descr" optional="show"/>-->
                 <field name="price" optional="show"/>
                 <field name="id_catesp" optional="show"/>
-                <field name="id_nhanviencsp" optional="show"/>
-<!--                <field name="img_sp" optional="show"/>-->
+<!--                <field name="id_nhanviencsp" optional="show"/>-->
+<!--                <field name="quantity" optional="show"/>-->
+                <!--                <field name="img_sp" optional="show"/>-->
             </tree>
 
         </field>
@@ -35,12 +37,12 @@
         <field name="model">sanpham</field>
         <field name="arch" type="xml">
             <kanban class="o_kanban_mobile" sample="1">
-                <field name="id_sp"/>
+<!--                <field name="id_sp"/>-->
                 <field name="name" optional="show"/>
-                <field name="descr" optional="show"/>
+<!--                <field name="descr" optional="show"/>-->
                 <field name="price" optional="show"/>
                 <field name="id_catesp" optional="show"/>
-                <field name="id_nhanviencsp" optional="show"/>
+<!--                <field name="id_nhanviencsp" optional="show"/>-->
                 <!--                <field name="img_sp" optional="show"/>-->
                 <templates>
                     <t t-name="kanban-box">
@@ -69,7 +71,11 @@
             </kanban>
         </field>
     </record>
-    <record model="ir.ui.view" id="name_view_form">
+
+
+
+
+    <record model="ir.ui.view" id="name_view_form_sanpham">
         <field name="name">Sản phẩm</field>
         <field name="model">sanpham</field>
 
@@ -77,13 +83,14 @@
             <form string="Idea form">
 
                 <sheet>
-                    <field name="img_sp" widget="image" class = "oe_avatar"/>
+                    <field name="img_sp" widget="image" class="oe_avatar"/>
                     <group>
-                        <group>
-                            <field name="id_sp"/>
+<!--                        <group>-->
+<!--                            <field name="id_sp"/>-->
+<!--&lt;!&ndash;                            <field name="quantity"/>&ndash;&gt;-->
 
 
-                        </group>
+<!--                        </group>-->
                         <group>
                             <field name="name"/>
                         </group>
@@ -97,16 +104,43 @@
                             <field name="id_catesp"/>
                         </group>
                         <group>
-                            <field name="id_nhanviencsp"/>
+<!--                            <field name="id_nhanviencsp"/>-->
+<!--                <field name="quantity"/>-->
+
+<!--                            <field name="kho_id"/>-->
                         </group>
-                        <group>
-                            <field name="kho_id"/>
-                        </group>
+                        <!--                        <group>-->
+                        <!--                            <field name="kho_id"/>-->
+                        <!--                        </group>-->
 
                     </group>
+
                     <notebook>
-                        <page string = "Mô tả sản phẩm" name = "descr">
+                        <page string="Mô tả sản phẩm" name="descr">
                             <field name="descr"></field>
+                        </page>
+<!--                        <page string="Nguyên liệu" name="Nguyên liệu">-->
+<!--                            <field name="materials">-->
+<!--&lt;!&ndash;                                <tree>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <field name="name"/>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                </tree>&ndash;&gt;-->
+<!--                            </field>-->
+<!--                        </page>-->
+                        <page string="Nguyên liệu" name="Nguyên liệu">
+                            <field name="nguyenlieu_ids">
+                                <tree>
+                                    <field name="material_id" optional="show"/>
+                                    <field name="quantity" optional="show"/>
+
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="material_id"/>
+                                         <field name="quantity"/>
+                                    </group>
+                                </form>
+                            </field>
                         </page>
                     </notebook>
 
@@ -121,6 +155,7 @@
         <field name="name">Sản Phẩm</field>
         <field name="res_model">sanpham</field>
         <field name="view_mode">tree,form,kanban</field>
+         <field name="search_view_id" ref="SanPham.view_sanpham_search"/>
     </record>
 
     <menuitem id="menu_qlqcf" name="Sản Phẩm" parent="sanpham" action="action_sp"/>

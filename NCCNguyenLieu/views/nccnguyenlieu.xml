@@ -10,8 +10,8 @@
 
         <field name="arch" type="xml">
             <tree string="Danh sách nhà cung cấp nguyên liệu">
-                <field name="ma_ncc" optional = "show"/>
-                <field name="ten_ncc" optional = "show"/>
+<!--                <field name="ma_ncc" optional = "show"/>-->
+                <field name="name" optional = "show"/>
             </tree>
         </field>
     </record>
@@ -24,12 +24,12 @@
                <sheet>
                     <group>
 
-                        <group>
-                            <field name = "ma_ncc"></field>
-                        </group>
+<!--                        <group>-->
+<!--                            <field name = "ma_ncc"></field>-->
+<!--                        </group>-->
 
                         <group>
-                            <field name = "ten_ncc"></field>
+                            <field name = "name"></field>
                         </group>
 
                     </group>

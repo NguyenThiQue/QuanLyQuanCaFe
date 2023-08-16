@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem id = "phieunhapkhoid" name = "Phiếu nhập kho" sequence = '2'
+        parent="Kho.khomenu"
+    />
+
+    <record model="ir.ui.view" id="view_nhapkho">
+        <field name="name">Phiếu nhập kho</field>
+        <field name="model">phieunhapkho</field>
+
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="nguyenlieu_id" optional = "show" />
+                <field name="soluongthucte" optional = "show"/>
+                <field name="soluong" optional = "show"/>
+                <field name="ngay_nhap" optional = "show"/>
+
+
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="name_view_form_phieunhap">
+        <field name="name">Phiếu nhập kho</field>
+        <field name="model">phieunhapkho</field>
+
+        <field name="arch" type="xml">
+            <form string="Idea form">
+               <sheet>
+                    <group>
+
+                        <group>
+                            <field name = "nguyenlieu_id"></field>
+                            <field name = "ngay_nhap"></field>
+
+                        </group>
+
+                        <group>
+                            <field name="soluongthucte" />
+                            <field name="soluong"/>
+
+                        </group>
+
+                         <group>
+                            <field name="loainguyenlieu" />
+                            <field name="giasp"/>
+
+                        </group>
+                        <group><field name="kho_id"/> </group>
+
+
+
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="action_phieunhapkho" model="ir.actions.act_window">
+        <field name="name">Phiếu nhập kho</field>
+        <field name="res_model">phieunhapkho</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id = "menu_qlqcf" name = "Phiếu nhập kho " parent = "phieunhapkhoid" action = "action_phieunhapkho"/>
+</odoo>

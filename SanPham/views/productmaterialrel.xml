@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <menuitem id="chitietsanphamid" name="Chi tiết sản phẩm" sequence='2'
+                  parent="SanPham.sanpham"
+        />
+        <!-- View for Product Material Relationship model - Tree view -->
+        <record model="ir.ui.view" id="view_product_material_rel_tree">
+            <field name="name">product.material.rel.tree</field>
+            <field name="model">chitietsanpham</field>
+            <field name="arch" type="xml">
+                <tree>
+<!--                    <field name="product_id"/>-->
+<!--                    <field name="name"/>-->
+                    <field name="material_id"/>
+                    <field name="quantity"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- View for Product Material Relationship model - Form view -->
+        <record model="ir.ui.view" id="view_product_material_rel_form">
+            <field name="name">product.material.rel.form</field>
+            <field name="model">chitietsanpham</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+<!--                            <field name="product_id"/>-->
+<!--                    <field name="name"/>-->
+
+                            <field name="material_id"/>
+                            <field name="quantity"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action for the tree view -->
+        <!--        <record model="ir.actions.act_window" id="action_product_material_rel_tree">-->
+        <!--            <field name="name">Product Material Relationship</field>-->
+        <!--            <field name="res_model">menusanpham</field>-->
+        <!--            <field name="view_mode">tree,form</field>-->
+        <!--&lt;!&ndash;            <field name="view_id" ref="view_product_material_rel_tree"/>&ndash;&gt;-->
+        <!--        </record>-->
+
+        <record id="action_spchitiet" model="ir.actions.act_window">
+            <field name="name">Chi tiết sản phẩm</field>
+            <field name="res_model">chitietsanpham</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_qlqcf" name="Chi tiết sản phẩm" parent="chitietsanphamid" action="action_spchitiet"/>
+
+    </data>
+</odoo>

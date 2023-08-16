@@ -22,8 +22,8 @@ class ThongkeSLDH(models.Model):
 
     @api.model
     def compute_sale_order(self, month, year):
-        # orders = self.env['donhang'].search(
-        #     [('ngaytaodh', '>=', f'{year}-{month}-01'), ('ngaytaodh', '<=', f'{year}-{month}-31')])
+
+
         orders = self.env['donhang'].search(
             [('state', '=', 'done'),('ngaytaodh', '>=', f'{year}-{month}-01'), ('ngaytaodh', '<=', f'{year}-{month}-30')])
 
